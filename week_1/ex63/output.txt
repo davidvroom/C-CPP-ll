@@ -1,0 +1,17 @@
+Testcase 1:
+Default constructor called
+
+Testcase 2:
+Default constructor called
+Overloaded assignment operator called
+
+Testcase 3:
+Default constructor called
+Default constructor called
+Move assignment operator called
+Destructor called
+
+Destructors:
+Destructor called
+Destructor called
+Destructor called
