@@ -9,9 +9,9 @@ int main()
 	Demo testCopyAss;
 	testCopyAss = testMoveCon;		// copy assignment is used
 
-	cout << "\nTestcase 3:\n";
-	Demo testMoveAss;
-	testMoveAss = factory();		// move assignment is used
+	//cout << "\nTestcase 3:\n";
+	//Demo testMoveAss;
+	//testMoveAss = factory();		// move assignment is used
 
-	cout << "\nDestructors:\n";
+	//cout << "\nDestructors:\n";
 }
