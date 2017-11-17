@@ -1,6 +1,0 @@
-#include "demo/demo.h"
-#include <iostream>
-
-using namespace std;
-
-Demo factory();
