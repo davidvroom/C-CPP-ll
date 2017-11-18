@@ -53,7 +53,7 @@ class Matrix
         friend std::ostream &operator<<(
                 std::ostream &out, Matrix const &matrix);
 
-private:
+    private:
         double &el(size_t row, size_t col) const;
         void transpose(double *dest) const;
 
