@@ -37,6 +37,7 @@ class Matrix
 
     
     private:
+        double &el(size_t row, size_t col) const;
         void transpose(double *dest) const;
 };
 
@@ -53,6 +54,11 @@ inline size_t Matrix::nRows() const
 inline size_t Matrix::size() const
 {
     return d_nRows * d_nCols;
+}
+
+inline double &Matrix::el(size_t row, size_t col) const
+{
+    return d_data[row * d_nCols + col];
 }
 
 #endif
