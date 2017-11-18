@@ -46,7 +46,20 @@
 \desc{Attain some familiarity with the way functions are selected from namespaces}
 
 We used the following code,
-%\lstinputlisting[title=\texttt{main.cc}]{../ex1/main.cpp}
+\lstinputlisting[title=\texttt{main.cc}]{../ex1/main.cc}
+
+\textbf{Call fun and explain why \texttt{First::fun} is called. How would you call \texttt{Second::fun} instead?}\\
+\\
+Als een functie uit een namespace wordt aangeroepen zonder de namespace te speciferen, dan wordt de namespace van het argument van de functie gebruikt om de namespace van de functie te bepalen; het zogenaamde 'Koenig Lookup'. Aangezien het argument is gedeclareerd als type \texttt{First::Enum} wordt \texttt{First::fun} aangeroepen. Om \texttt{Second::fun} aan te roepen moet de namespace expliciet worden genoemd: \texttt{Second::fun(symbol)}.\\
+
+\textbf{In the namespaces slides (\#6) it is stated that \texttt{operator<<}'s use is simplified because of the Koenig lookup. Explain.}\\
+\\
+Zonder Koenig lookup zal de korte versie \texttt{std::cout << "Hello"} (net als\\ \texttt{operator<<(std::cout, "Hello")}) niet gebruikt kunnen worden. De insertion operator functie uit de standard namespace zou dan niet bereikbaar zijn zonder de prefix \texttt{std::} en de explicite functie call \texttt{operator<<(std::cout, "Hello")}. \\
+
+\textbf{Now, just above main, declare a function \texttt{void fun(First::Enum symbol)}. Compile this program. What happens? Why?}\\
+\\
+Er ontstaat een ambiguititeit. De compiler weet nu niet of hij de functie uit de namespace \texttt{First} of de globale functie net boven main moet aanroepen.
+
 
 \clearpage
 \section*{Exercise 2}
