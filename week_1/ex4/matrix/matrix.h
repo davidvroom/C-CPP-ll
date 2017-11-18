@@ -41,6 +41,13 @@ class Matrix
         double *operator[](size_t index);
         double *operator[](size_t index) const;
 
+            // exercise 4
+            // ==========
+
+        friend Matrix operator+(Matrix const &lhs, Matrix const &rhs);
+        friend Matrix operator+(Matrix &&lhs, Matrix const &rhs);
+        Matrix &operator+=(Matrix const &other) &;      // 1
+        Matrix operator+=(Matrix const &other) &&;      // 2
 
 private:
         double &el(size_t row, size_t col) const;
@@ -49,6 +56,10 @@ private:
             // exercise 3
             // ==========               // private backdoor
         double *operatorIndex(size_t index) const;
+
+            // exercise 4
+            // ==========
+        void add(Matrix const &rhs); 
 };
 
 inline size_t Matrix::nCols() const
@@ -87,5 +98,10 @@ inline double *Matrix::operator[](size_t index) const
 {
     return operatorIndex(index);
 }
+
+    // exercise 4
+    // ==========
+Matrix operator+(Matrix const &lhs, Matrix const &rhs);     // 1
+Matrix operator+(Matrix &&lhs, Matrix const &rhs);          // 2
 
 #endif
