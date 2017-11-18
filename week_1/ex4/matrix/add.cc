@@ -9,7 +9,6 @@ void Matrix::add(Matrix const &rhs)
 		exit(1);
 	}
 
-	size_t matSize = size();
-	for (size_t idx = 0; idx != matSize; ++idx)
-		d_data[idx] += rhs.d_data[idx];
+    for (size_t idx = size(); idx--; )
+        d_data[idx] += rhs.d_data[idx];
 }

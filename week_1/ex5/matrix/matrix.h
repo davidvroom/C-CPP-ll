@@ -48,7 +48,12 @@ class Matrix
         Matrix &operator+=(Matrix const &other) &;      // 1
         Matrix operator+=(Matrix const &other) &&;      // 2
 
-    private:
+            // exercise 5
+            // ==========
+        friend std::ostream &operator<<(
+                std::ostream &out, Matrix const &matrix);
+
+private:
         double &el(size_t row, size_t col) const;
         void transpose(double *dest) const;
 
@@ -58,7 +63,7 @@ class Matrix
 
             // exercise 4
             // ==========
-        void add(Matrix const &rhs); 
+        void add(Matrix const &rhs);
 };
 
 inline size_t Matrix::nCols() const
@@ -102,5 +107,9 @@ inline double *Matrix::operator[](size_t index) const
     // ==========
 Matrix operator+(Matrix const &lhs, Matrix const &rhs);     // 1
 Matrix operator+(Matrix &&lhs, Matrix const &rhs);          // 2
+
+    // exercise 5
+    // ==========
+std::ostream &operator<<(std::ostream &out, Matrix const &matrix);
 
 #endif
