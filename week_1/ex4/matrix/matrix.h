@@ -100,7 +100,7 @@ inline double *Matrix::operator[](size_t index) const
 
     // exercise 4
     // ==========
-Matrix operator+(Matrix const &lhs, Matrix const &rhs);     // 1
-Matrix operator+(Matrix &&lhs, Matrix const &rhs);          // 2
+//Matrix operator+(Matrix const &lhs, Matrix const &rhs);     // 1
+//Matrix operator+(Matrix &&lhs, Matrix const &rhs);          // 2
 
 #endif
