@@ -82,10 +82,10 @@ class Matrix
 
             // exercise 5
             // ==========
-        std::istream &extractRows(std::istream &in,
-                                  Matrix const &matrix) const;
-        std::istream &extractCols(std::istream &in,
-                                  Matrix const &matrix) const;
+        std::istream &extractRows(
+                std::istream &in, Matrix const &matrix) const;
+        std::istream &extractCols(
+                std::istream &in, Matrix const &matrix) const;
 };
 
 inline size_t Matrix::nCols() const
