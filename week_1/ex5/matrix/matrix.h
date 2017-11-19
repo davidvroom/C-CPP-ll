@@ -10,6 +10,11 @@ class Matrix
     size_t d_nCols = 0;
     double *d_data = 0;                     // in fact R x C matrix
 
+        // exercise 5
+        // ==========
+    std::istream &(Matrix::*d_extractMode)(
+            std::istream &in, Matrix const &matrix) const = &Matrix::extractRows;
+
     public:
         typedef std::initializer_list<
             std::initializer_list<double>> IniList;
@@ -52,6 +57,16 @@ class Matrix
             // ==========
         friend std::ostream &operator<<(
                 std::ostream &out, Matrix const &matrix);
+        friend std::istream &operator>>(
+                std::istream &in, Matrix const &matrix);
+
+        enum Mode
+        {
+            BY_ROWS,
+            BY_COLS
+        };
+
+        Matrix &operator()(size_t nRows, size_t nCols, Mode byCols = BY_ROWS);
 
     private:
         double &el(size_t row, size_t col) const;
@@ -64,6 +79,13 @@ class Matrix
             // exercise 4
             // ==========
         void add(Matrix const &rhs);
+
+            // exercise 5
+            // ==========
+        std::istream &extractRows(std::istream &in,
+                                  Matrix const &matrix) const;
+        std::istream &extractCols(std::istream &in,
+                                  Matrix const &matrix) const;
 };
 
 inline size_t Matrix::nCols() const
@@ -111,5 +133,6 @@ Matrix operator+(Matrix &&lhs, Matrix const &rhs);          // 2
     // exercise 5
     // ==========
 std::ostream &operator<<(std::ostream &out, Matrix const &matrix);
+std::istream &operator>>(std::istream &in, Matrix const &matrix);
 
 #endif
