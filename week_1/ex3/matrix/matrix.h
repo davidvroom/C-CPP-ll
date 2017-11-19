@@ -39,7 +39,7 @@ class Matrix
             // exercise 3
             // ==========
         double *operator[](size_t index);
-        double *operator[](size_t index) const;
+        double const *operator[](size_t index) const;
 
 
 private:
@@ -83,7 +83,7 @@ inline double *Matrix::operator[](size_t index)
     return operatorIndex(index);
 }
 
-inline double *Matrix::operator[](size_t index) const
+inline double const *Matrix::operator[](size_t index) const
 {
     return operatorIndex(index);
 }
