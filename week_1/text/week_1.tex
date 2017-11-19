@@ -22,7 +22,8 @@
 	commentstyle=\color{light-gray}\slshape,
 	belowskip=1.5em,
 	aboveskip=1.5em,
-	fontadjust
+	fontadjust,
+	tabsize=4		%added for proper tab alligning
 }
 
 \usepackage[left=1.25in, right=1.25in]{geometry}
@@ -50,7 +51,28 @@ We used the following code,
 
 \clearpage
 \section*{Exercise 2}
-\desc{ziet ie dit?}
+\desc{Learn why streams can be used to determine the truth values of conditions, but not to assign values to bool variables.}
+
+Note: The code given in the exercise is incomplete, and therefore won't compile even without the intended mistake. So first of all we state the following code as a starting point:
+
+\lstinputlisting[title=\texttt{header.ih}]{../ex2/1/header.ih}
+\lstinputlisting[title=\texttt{main.cc}]{../ex2/1/main.cc}
+\lstinputlisting[title=\texttt{process.cc}]{../ex2/1/process.cc}
+\lstinputlisting[title=\texttt{promptget.cc}]{../ex2/1/promptget.cc}
+
+\subsection*{1.}
+This code doesn't work, because \texttt{getline(in, str)} cannot be returned as a bool in \texttt{promptGet}. This is because the class \texttt{istream} defines \texttt{explicit operator bool() const}. This allows the compiler to only perform a conversion to a bool when this is explicitly required (as in a while statement), but not implicitly (as in the return statement above).
+
+\subsection*{2.}
+By changing \texttt{promptGet}'s body in the following way, the code does compile:
+\lstinputlisting[title=\texttt{promptget.cc}]{../ex2/2/promptget.cc}
+
+\subsection*{3.}
+By changing \texttt{promptGet} (and the declaration in the internal header) in the following way, the code does compile:
+\lstinputlisting[title=\texttt{promptget.cc}]{../ex2/3/promptget.cc}
+
+
+
 
 \clearpage
 \section*{Exercise 3}
