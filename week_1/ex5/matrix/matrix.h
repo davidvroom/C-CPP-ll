@@ -12,18 +12,22 @@ class Matrix
 
         // exercise 5
         // ==========
+    size_t d_idxColStart = 0;
+    size_t d_idxRowStart = 0;
+    size_t d_nColEnd = d_nCols;
+    size_t d_nRowEnd = d_nRows;
+
     std::istream &(Matrix::*d_extractMode)(
-            std::istream &in, Matrix const &matrix) const = &Matrix::extractRows;
+        std::istream &in, Matrix const &matrix) const = &Matrix::extractRows;
 
     public:
-        typedef std::initializer_list<
-            std::initializer_list<double>> IniList;
+        typedef std::initializer_list<std::initializer_list<double>> IniList;
 
         Matrix() = default;
         Matrix(size_t nRows, size_t nCols);         // 1
         Matrix(Matrix const &other);                // 2
         Matrix(Matrix &&tmp);                       // 3
-        Matrix(IniList inilist);                    // 4
+        explicit Matrix(IniList inilist);           // 4
 
         ~Matrix();
 
@@ -44,7 +48,7 @@ class Matrix
             // exercise 3
             // ==========
         double *operator[](size_t index);
-        double *operator[](size_t index) const;
+        double const *operator[](size_t index) const;
 
             // exercise 4
             // ==========
@@ -56,9 +60,9 @@ class Matrix
             // exercise 5
             // ==========
         friend std::ostream &operator<<(
-                std::ostream &out, Matrix const &matrix);
+            std::ostream &out, Matrix const &matrix);
         friend std::istream &operator>>(
-                std::istream &in, Matrix const &matrix);
+            std::istream &in, Matrix const &matrix);
 
         enum Mode
         {
@@ -66,7 +70,13 @@ class Matrix
             BY_COLS
         };
 
-        Matrix &operator()(size_t nRows, size_t nCols, Mode byCols = BY_ROWS);
+        Matrix &operator()(
+            size_t nRows, size_t nCols, Mode byCols = BY_ROWS);     // 1
+        Matrix &operator()(
+            Mode byCols, size_t idxStart = 0, size_t remLines = 0); // 2
+        Matrix &operator()(
+            Mode byCols, size_t idxRowStart, size_t nSubRows,
+            size_t idxColStart, size_t nSubCols);                   // 3
 
     private:
         double &el(size_t row, size_t col) const;
@@ -83,9 +93,9 @@ class Matrix
             // exercise 5
             // ==========
         std::istream &extractRows(
-                std::istream &in, Matrix const &matrix) const;
+            std::istream &in, Matrix const &matrix) const;
         std::istream &extractCols(
-                std::istream &in, Matrix const &matrix) const;
+            std::istream &in, Matrix const &matrix) const;
 };
 
 inline size_t Matrix::nCols() const
@@ -120,19 +130,10 @@ inline double *Matrix::operator[](size_t index)
     return operatorIndex(index);
 }
 
-inline double *Matrix::operator[](size_t index) const
+inline double const *Matrix::operator[](size_t index) const
 {
     return operatorIndex(index);
 }
 
-    // exercise 4
-    // ==========
-Matrix operator+(Matrix const &lhs, Matrix const &rhs);     // 1
-Matrix operator+(Matrix &&lhs, Matrix const &rhs);          // 2
-
-    // exercise 5
-    // ==========
-std::ostream &operator<<(std::ostream &out, Matrix const &matrix);
-std::istream &operator>>(std::istream &in, Matrix const &matrix);
 
 #endif

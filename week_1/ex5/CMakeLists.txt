@@ -9,6 +9,7 @@ set(SOURCE_FILES main.cc main.ih matrix/destructor.cc matrix/identity.cc matrix/
         matrix/swap.cc matrix/tr.cc matrix/transpose.cc matrix/transpose2.cc
         matrix/add.cc matrix/operatoradd.cc matrix/operatoradd2.cc
         matrix/operatorcompadd1.cc matrix/operatorcompadd2.cc
-        matrix/operatorinsert.cc matrix/operatorextract.cc matrix/functor.cc
-        matrix/extractrows.cc matrix/extractcols.cc)
+        matrix/operatorinsert.cc matrix/operatorextract.cc matrix/functor1.cc
+        matrix/extractrows.cc matrix/extractcols.cc matrix/functor2.cc
+        matrix/functor3.cc)
 add_executable(ex5 ${SOURCE_FILES})
