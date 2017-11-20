@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(ex5)
+project(ex7)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -12,4 +12,4 @@ set(SOURCE_FILES main.cc main.ih matrix/destructor.cc matrix/identity.cc matrix/
         matrix/operatorinsert.cc matrix/operatorextract.cc matrix/functor1.cc
         matrix/extractrows.cc matrix/extractcols.cc matrix/functor2.cc
         matrix/functor3.cc matrix/operatorequalto.cc matrix/operatornotequalto.cc)
-add_executable(ex5 ${SOURCE_FILES})
+add_executable(ex7 ${SOURCE_FILES})
