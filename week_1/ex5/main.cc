@@ -14,6 +14,11 @@ int main()
 
     cout << mat << '\n';
 
+    //cout << mat(2,5);
+
+    //mat(2,5);
+    //cout << mat << '\n';
+
 
 }
 
