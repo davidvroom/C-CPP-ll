@@ -1,6 +1,6 @@
 #include "matrix.ih"
 
-Matrix &Matrix::operator()(Mode byCols, size_t idxStart, size_t remLines)
+Matrix &Matrix::operator()(Mode byCols, size_t idxStart, size_t nSubLines)
 {
     if (byCols)
     {
@@ -12,21 +12,21 @@ Matrix &Matrix::operator()(Mode byCols, size_t idxStart, size_t remLines)
             return *this;
         }
         d_idxColStart = idxStart;
-                // if a valid third argument is given
-        if (remLines and d_idxColStart + remLines < d_nCols)
-            d_nColEnd = d_idxColStart + remLines;
+                // if a submatrix lies within matrix set end of submatrix
+        if (d_idxColStart + nSubLines < d_nCols)
+            d_nColEnd = d_idxColStart + nSubLines;
     }
     else        // extract by rows
     {
         if (idxStart >= d_nRows)
         {       // if requested submatrix lies outside matrix, do nothing
-            d_idxColStart = d_nRowEnd;
+            d_idxRowStart = d_nRowEnd;
             return *this;
         }
         d_idxRowStart = idxStart;
-                // if a valid third argument is given
-        if (remLines and d_idxRowStart + remLines < d_nRows)
-            d_nRowEnd = d_idxRowStart + remLines;
+                // if a submatrix lies within matrix set end of submatrix
+        if (d_idxRowStart + nSubLines < d_nRows)
+            d_nRowEnd = d_idxRowStart + nSubLines;
     }
 
     return *this;

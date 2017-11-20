@@ -73,7 +73,7 @@ class Matrix
         Matrix &operator()(
             size_t nRows, size_t nCols, Mode byCols = BY_ROWS);     // 1
         Matrix &operator()(
-            Mode byCols, size_t idxStart = 0, size_t remLines = 0); // 2
+            Mode byCols, size_t idxStart = 0, size_t nSubLines = 0); // 2
         Matrix &operator()(
             Mode byCols, size_t idxRowStart, size_t nSubRows,
             size_t idxColStart, size_t nSubCols);                   // 3

@@ -20,7 +20,7 @@ Matrix &Matrix::operator()(Mode byCols, size_t idxStart, size_t remLines)
     {
         if (idxStart >= d_nRows)
         {       // if requested submatrix lies outside matrix, do nothing
-            d_idxColStart = d_nRowEnd;
+            d_idxRowStart = d_nRowEnd;
             return *this;
         }
         d_idxRowStart = idxStart;

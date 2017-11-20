@@ -10,7 +10,7 @@ int main()
 
     //cin >> mat(3,2, Matrix::BY_COLS);
 
-    cin >> mat(Matrix::BY_ROWS, 1,2,0,1);
+    cin >> mat(Matrix::BY_COLS,1,1);
 
     cout << mat << '\n';
 
