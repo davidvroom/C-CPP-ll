@@ -16,7 +16,7 @@ Matrix &Matrix::operator()(Mode byCols,
     if (byCols)
         d_extractMode = &Matrix::extractCols;
 
-    // set end values submatrix if within matrix
+    // if within matrix set end values of submatrix
     if (d_idxRowStart + nSubRows < d_nRows)
         d_nRowEnd = d_idxRowStart + nSubRows;
 

@@ -52,8 +52,8 @@ class Matrix
 
             // exercise 4
             // ==========
-        friend Matrix operator+(Matrix const &lhs, Matrix const &rhs);
-        friend Matrix operator+(Matrix &&lhs, Matrix const &rhs);
+        friend Matrix operator+(Matrix const &lhs, Matrix const &rhs); // 1
+        friend Matrix operator+(Matrix &&lhs, Matrix const &rhs);      // 2
         Matrix &operator+=(Matrix const &other) &;      // 1
         Matrix operator+=(Matrix const &other) &&;      // 2
 
@@ -82,7 +82,6 @@ class Matrix
             // ==========
         friend bool operator==(Matrix const &lhs, Matrix const &rhs);
         friend bool operator!=(Matrix const &lhs, Matrix const &rhs);
-
 
     private:
         double &el(size_t row, size_t col) const;
@@ -141,6 +140,5 @@ inline double const *Matrix::operator[](size_t index) const
 {
     return operatorIndex(index);
 }
-
 
 #endif
