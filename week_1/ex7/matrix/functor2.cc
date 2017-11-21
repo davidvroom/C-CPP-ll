@@ -12,8 +12,9 @@ Matrix &Matrix::operator()(Mode byCols, size_t idxStart, size_t nSubLines)
             return *this;
         }
         d_idxColStart = idxStart;
-                // if a submatrix lies within matrix set end of submatrix
-        if (d_idxColStart + nSubLines < d_nCols)
+                // if number of sublines is not default and
+                // submatrix lies within matrix, then set end of submatrix
+        if (nSubLines == true and d_idxColStart + nSubLines < d_nCols)
             d_nColEnd = d_idxColStart + nSubLines;
     }
     else        // extract by rows
@@ -24,8 +25,9 @@ Matrix &Matrix::operator()(Mode byCols, size_t idxStart, size_t nSubLines)
             return *this;
         }
         d_idxRowStart = idxStart;
-                // if a submatrix lies within matrix set end of submatrix
-        if (d_idxRowStart + nSubLines < d_nRows)
+                // if number of sublines is not default and
+                // submatrix lies within matrix, then set end of submatrix
+        if (nSubLines == true and d_idxRowStart + nSubLines < d_nRows)
             d_nRowEnd = d_idxRowStart + nSubLines;
     }
 
