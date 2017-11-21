@@ -10,15 +10,29 @@ class Matrix
     size_t d_nCols = 0;
     double *d_data = 0;                     // in fact R x C matrix
 
+        // exercise 4
+        // ==========
+    friend Matrix operator+(Matrix const &lhs, Matrix const &rhs); // 1
+    friend Matrix operator+(Matrix &&lhs, Matrix const &rhs);      // 2
+
         // exercise 5
         // ==========
+    friend std::ostream &operator<<(
+        std::ostream &out, Matrix const &matrix);
+    friend std::istream &operator>>(
+        std::istream &in, Matrix const &matrix);
+
     size_t d_idxColStart = 0;
     size_t d_idxRowStart = 0;
     size_t d_nColEnd = d_nCols;
     size_t d_nRowEnd = d_nRows;
-
     std::istream &(Matrix::*d_extractMode)(
         std::istream &in, Matrix const &matrix) const = &Matrix::extractRows;
+
+        // exercise 7
+        // ==========
+    friend bool operator==(Matrix const &lhs, Matrix const &rhs);
+    friend bool operator!=(Matrix const &lhs, Matrix const &rhs);
 
     public:
         typedef std::initializer_list<std::initializer_list<double>> IniList;
@@ -52,18 +66,11 @@ class Matrix
 
             // exercise 4
             // ==========
-        friend Matrix operator+(Matrix const &lhs, Matrix const &rhs); // 1
-        friend Matrix operator+(Matrix &&lhs, Matrix const &rhs);      // 2
         Matrix &operator+=(Matrix const &other) &;      // 1
         Matrix operator+=(Matrix const &other) &&;      // 2
 
             // exercise 5
             // ==========
-        friend std::ostream &operator<<(
-            std::ostream &out, Matrix const &matrix);
-        friend std::istream &operator>>(
-            std::istream &in, Matrix const &matrix);
-
         enum Mode
         {
             BY_ROWS,
@@ -73,15 +80,10 @@ class Matrix
         Matrix &operator()(
             size_t nRows, size_t nCols, Mode byCols = BY_ROWS);     // 1
         Matrix &operator()(
-            Mode byCols, size_t idxStart = 0, size_t nSubLines = 0); // 2
+            Mode byCols, size_t idxStart = 0, size_t nSubLines = 0);// 2
         Matrix &operator()(
             Mode byCols, size_t idxRowStart, size_t nSubRows,
             size_t idxColStart, size_t nSubCols);                   // 3
-
-            // exercise 7
-            // ==========
-        friend bool operator==(Matrix const &lhs, Matrix const &rhs);
-        friend bool operator!=(Matrix const &lhs, Matrix const &rhs);
 
     private:
         double &el(size_t row, size_t col) const;

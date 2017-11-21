@@ -5,14 +5,14 @@
 
 class Strings
 {
+    friend bool operator==(Strings const &lhs, Strings const &rhs);
+    friend bool operator!=(Strings const &lhs, Strings const &rhs);
+    
     size_t d_size = 0;
     size_t d_capacity = 1;
     std::string **d_str;
 
     public:
-        friend bool operator==(Strings const &lhs, Strings const &rhs);
-        friend bool operator!=(Strings const &lhs, Strings const &rhs);
-
         Strings();
         Strings(int argc, char **argv);
         Strings(char **environLike);
