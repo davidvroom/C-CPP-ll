@@ -48,7 +48,7 @@
 \section*{Exercise 11}
 \desc{Learn to appreciate catching references when throwing exceptions}
 
-A simple class \texttt{Object} is made. It has a data member \texttt{d\_name} that stores an internal name. If an object is made via the copy constructor, 'copy' is added to this internal name. The constructor, copy constructor and destructor print what they did together with the internal name. A function \texttt{hello()} is added that prints this internal name. 
+A simple class \texttt{Object} is made. It has a data member \texttt{d\_name} that stores an internal name. If an object is made via the copy constructor, 'copy' is added to this internal name. The constructor, copy constructor and destructor print what they did together with the internal name. A function \texttt{hello()} is added that says hello and prints the internal name. 
 \lstinputlisting[title=\texttt{object/object.h}]{../ex11/object/object.h}
 \lstinputlisting[title=\texttt{object/object.ih}]{../ex11/object/object.ih}
 \lstinputlisting[title=\texttt{object/destructor.cc}]{../ex11/object/destructor.cc}
@@ -56,15 +56,25 @@ A simple class \texttt{Object} is made. It has a data member \texttt{d\_name} th
 \lstinputlisting[title=\texttt{object/object1.cc}]{../ex11/object/object1.cc}
 \lstinputlisting[title=\texttt{object/object2.cc}]{../ex11/object/object2.cc}
 
-\vspace{1cm}
+\vspace{0.5cm}
 Below a main function (\texttt{main1.cc}) is shown, in which within a try block, an object of the class \texttt{Object} is made. This object is then thrown. The exception handler catches an object of the class \texttt{Object} (by value). The output of the program is given below the code of main1. We see that the object is properly constructed and says hello. Then when it is thrown, first a copy is made and the original object is destructed. The copy is passed to the exception handler. Here an additional copy is made, because it receives the object by value. Therefore, within the exception handler, the copy of the copy of the object says hello.
 \lstinputlisting[title=\texttt{main1.cc}]{../ex11/main1.cc}
-\lstinputlisting[caption=\texttt{Output of main1.cc},language=bash, numbers=none]{../ex11/outputMain1.txt}
+\lstinputlisting[title=\texttt{Output of main1.cc},language=bash, numbers=none]{../ex11/outputMain1.txt}
 
-\vspace{1cm}
+\vspace{0.5cm}
 The following main function (\texttt{main2.cc}) does the same as the previous, except that the exception handler catches \emph{a reference} to an object of the class \texttt{Object}. From the output we see that no second copy is made. This is more efficient and therefore exception handlers should catch references to objects. 
 \lstinputlisting[title=\texttt{main2.cc}]{../ex11/main2.cc}
-\lstinputlisting[caption=\texttt{Output of main2.cc},language=bash, numbers=none]{../ex11/outputMain2.txt}
+\lstinputlisting[title=\texttt{Output of main2.cc},language=bash, numbers=none]{../ex11/outputMain2.txt}
+
+\vspace{0.5cm}
+In the previous two programs, we saw that a copy of the object is thrown. This is because the original object is a local object that only lives inside the try block. The same is true when a reference to an object is thrown, as can be seen from the output that the following code produces:
+\lstinputlisting[title=\texttt{main3.cc}]{../ex11/main3.cc}
+\lstinputlisting[title=\texttt{Output of main3.cc},language=bash, numbers=none]{../ex11/outputMain3.txt}
+
+\vspace{0.5cm}
+The following main function (\texttt{main4.cc}) has two exception levels. In the inner level, an object of the class \texttt{Object} is thrown and caught as a reference. Then it is rethrown to a more shallow level where it is again caught as a reference. From the shown output, we conclude that '\texttt{throw;}' results in throwing the currently available exception and not a copy of that exception.
+\lstinputlisting[title=\texttt{main4.cc}]{../ex11/main4.cc}
+\lstinputlisting[title=\texttt{Output of main4.cc},language=bash, numbers=none]{../ex11/outputMain4.txt}
 
 
 \clearpage
