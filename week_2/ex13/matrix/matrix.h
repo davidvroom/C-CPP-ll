@@ -36,7 +36,9 @@ class Matrix
         Matrix &tr();                   // transpose (must be square)
         Matrix transpose() const;       // any dim.
 
-        void swap(Matrix &other);
+        void swap(Matrix &other) noexcept;
+
+        double &at(size_t rowIdx, size_t colIdx);   // NEW 
 
     
     private:

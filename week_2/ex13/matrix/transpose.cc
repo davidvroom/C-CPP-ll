@@ -1,6 +1,10 @@
+// This function offers the basic guarantee. If it cannot make a transpose, 
+// the allocated memory is returned. 
+
 #include "matrix.ih"
 
 Matrix Matrix::transpose() const
+try
 {
     Matrix ret;                             // optimized implementation
 
@@ -11,5 +15,11 @@ Matrix Matrix::transpose() const
     transpose(ret.d_data);
 
     return ret;
+}
+catch (...)
+{
+	delete[] ret.d_data;
+	cerr << "Could not make transpose\n";
+	throw;
 }
 
