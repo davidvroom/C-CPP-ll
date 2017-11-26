@@ -2,5 +2,11 @@
 
 int main()
 {
-
+    try
+    {
+        Maxfour *array;
+        array = new Maxfour[10];
+    }
+    catch (...)
+    {}
 }

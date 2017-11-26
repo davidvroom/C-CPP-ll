@@ -5,11 +5,12 @@
 
 class Maxfour
 {
-    Maxfour *d_arrObj;
+    static size_t d_nObj;
 
     public:
-        explicit Maxfour(size_t size);
+        Maxfour();
         ~Maxfour();
+    private:
 };
 
 #endif
