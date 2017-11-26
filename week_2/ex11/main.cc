@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 		else
 			cout << "invalid program call\n";
 	}
-	catch (Object &caughtObject)
+	catch (Object caughtObject)
 	{
 		cout << "Caught exception\n";
 		caughtObject.hello();

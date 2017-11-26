@@ -46,7 +46,25 @@
 \maketitle
 
 \section*{Exercise 11}
-\desc{}
+\desc{Learn to appreciate catching references when throwing exceptions}
+
+A simple class \texttt{Object} is made. It has a data member \texttt{d\_name} that stores an internal name. If an object is made via the copy constructor, 'copy' is added to this internal name. The constructor, copy constructor and destructor print what they did together with the internal name. A function \texttt{hello()} is added that prints this internal name. 
+\lstinputlisting[title=\texttt{object/object.h}]{../ex11/object/object.h}
+\lstinputlisting[title=\texttt{object/object.ih}]{../ex11/object/object.ih}
+\lstinputlisting[title=\texttt{object/destructor.cc}]{../ex11/object/destructor.cc}
+\lstinputlisting[title=\texttt{object/hello.cc}]{../ex11/object/hello.cc}
+\lstinputlisting[title=\texttt{object/object1.cc}]{../ex11/object/object1.cc}
+\lstinputlisting[title=\texttt{object/object2.cc}]{../ex11/object/object2.cc}
+
+\vspace{1cm}
+Below a main function (\texttt{main1.cc}) is shown, in which within a try block, an object of the class \texttt{Object} is made. This object is then thrown. The exception handler catches an object of the class \texttt{Object} (by value). The output of the program is given below the code of main1. We see that the object is properly constructed and says hello. Then when it is thrown, first a copy is made and the original object is destructed. The copy is passed to the exception handler. Here an additional copy is made, because it receives the object by value. Therefore, within the exception handler, the copy of the copy of the object says hello.
+\lstinputlisting[title=\texttt{main1.cc}]{../ex11/main1.cc}
+\lstinputlisting[caption=\texttt{Output of main1.cc},language=bash, numbers=none]{../ex11/outputMain1.txt}
+
+\vspace{1cm}
+The following main function (\texttt{main2.cc}) does the same as the previous, except that the exception handler catches \emph{a reference} to an object of the class \texttt{Object}. From the output we see that no second copy is made. This is more efficient and therefore exception handlers should catch references to objects. 
+\lstinputlisting[title=\texttt{main2.cc}]{../ex11/main2.cc}
+\lstinputlisting[caption=\texttt{Output of main2.cc},language=bash, numbers=none]{../ex11/outputMain2.txt}
 
 
 \clearpage
