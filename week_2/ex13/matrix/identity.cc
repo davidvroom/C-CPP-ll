@@ -1,5 +1,6 @@
-// This function offers the basic guarantee. If it cannot make an identity matrix, 
-// the allocated memory is returned (handled in the corresponding constructor). 
+// This function offers the basic guarantee. If it cannot make an identity
+// matrix, the allocated memory is returned (handled in the corresponding
+// constructor).
 
 #include "matrix.ih"
 

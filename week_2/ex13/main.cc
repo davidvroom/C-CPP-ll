@@ -11,7 +11,7 @@ try
     show(cout, Matrix::identity(4)) << '\n';
 
     cout << "Changing the 3 x 3 matrix into a 3 x 4 matrix filled with 1..12"
-                                                                        "\n";
+         << '\n';
     mat = Matrix{
                     { 1,  2,  3}, 
                     { 4,  5,  6}, 
