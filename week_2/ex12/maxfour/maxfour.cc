@@ -3,13 +3,13 @@
 Maxfour::Maxfour()
 try
 {
-    if (d_nObj >= 4)
+    if (s_nObj >= 11)
         throw "max. number of objects reached";
 
-    ++d_nObj;
+    ++s_nObj;
 
     cout << "Number of objects increased by one (total: "
-         << d_nObj
+         << s_nObj
          <<")\n";
 }
 catch (const char *message)

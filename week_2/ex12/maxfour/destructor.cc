@@ -2,9 +2,9 @@
 
 Maxfour::~Maxfour()
 {
-    --d_nObj;
+    --s_nObj;
 
     cout << "Number of objects decreased by one (total: "
-         << d_nObj
+         << s_nObj
          <<")\n";
 }

@@ -5,7 +5,7 @@
 
 class Maxfour
 {
-    static size_t d_nObj;
+    static size_t s_nObj;
 
     public:
         Maxfour();
