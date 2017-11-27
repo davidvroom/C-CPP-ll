@@ -4,12 +4,12 @@ int main()
 try
 {
 	ShowExcepts object(1, &test);
-	//object.asAthrowList();
+	object.asAthrowList();
 
 	//object.asNoexcept();
-	object.NoEx();
+	//object.NoEx();
 }
-catch (exception bad) // or bad_exception ?
+catch (bad_exception bad) // or bad_exception ?
 {
 	cout << bad.what() << '\n';
 }

@@ -3,5 +3,5 @@
 void test()
 {
 	cout << "test called\n";
-	throw 1;
+	throw 1.5;
 }

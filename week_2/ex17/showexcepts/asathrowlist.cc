@@ -3,7 +3,7 @@
 void ShowExcepts::asAthrowList() const
 try
 {
-	// function code throwing exceptions
+	// function code throwing exceptions, e.g. :
 	throw 1.5;
 }
 catch (int)
