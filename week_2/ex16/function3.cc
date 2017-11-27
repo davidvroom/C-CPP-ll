@@ -10,9 +10,6 @@ try
 catch (char const *message)
 {
     cout << message << '\n';
-    terminate();
-}
-catch (...)
-{
     throw;
 }
+
