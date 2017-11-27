@@ -1,13 +1,12 @@
 #include "main.ih"
 
 int main()
+try
 {
-    try
-    {
-        Maxfour *array = new Maxfour[10];
+    Maxfour *array = new Maxfour[10];
 
-        delete[] array;		// In case the array is succesfully constructed
-    }
-    catch (...)
-    {}
+    delete[] array;		// In case the array is succesfully constructed
 }
+catch (...)
+{}
+
