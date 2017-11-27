@@ -1,0 +1,9 @@
+#include <iostream>
+
+#include "demo/demo.h"
+
+using namespace std;
+
+void function1();
+void function2();
+void function3();
