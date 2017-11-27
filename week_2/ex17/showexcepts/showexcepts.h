@@ -9,7 +9,7 @@ class ShowExcepts
 
     public:
         ShowExcepts(int value, void (*fp)());
-        void asAthrowList() const;
+        void asAthrowList() const ;
         void asNoexcept() const;
 };
         

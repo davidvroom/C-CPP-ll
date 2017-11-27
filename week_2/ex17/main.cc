@@ -1,19 +1,26 @@
 #include "main.ih"
 
 int main()
-try
 {
 	ShowExcepts object(1, &test);
-	object.asAthrowList();
-
-	//object.asNoexcept();
-	//object.NoEx();
-}
-catch (bad_exception bad) // or bad_exception ?
-{
-	cout << bad.what() << '\n';
-}
-catch (...)
-{
-	cout << "caught expeption in main\n";
+	try
+	{
+		object.asAthrowList();		// throws an exception
+	}
+	catch (bad_exception bad)
+	{
+		cout << bad.what() << '\n';
+	}
+	catch (...)
+	{
+		cout << "Caught exception in main\n";
+	}
+	try
+	{
+		object.asNoexcept();		// terminates program 
+	}
+	catch (...)
+	{
+		cout << "Will not be reached\n";
+	}
 }
