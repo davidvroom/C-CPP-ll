@@ -4,10 +4,13 @@
 
 class ShowExcepts
 {
-    public:
-        ShowExcepts(int value, void (*pf)());
+	void (*d_fp)();
+;    public:
+        ShowExcepts(int value, void (*fp)());
         void asAthrowList();
         void asNoexcept();
+
+        void NoEx() noexcept;
 };
         
 #endif
