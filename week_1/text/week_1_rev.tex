@@ -29,6 +29,11 @@
 	xrightmargin=0cm
 }
 
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{
+	\fancyhead[L]{Previous attempt graded by FB.}
+	\renewcommand{\headrulewidth}{0pt}
+}
 
 \newcommand{\desc}[1]{\textit{#1} \vspace{1em}}
 
@@ -45,32 +50,23 @@
 
 \begin{document}
 \maketitle
-
 \section*{Exercise 1}
 \desc{Attain some familiarity with the way functions are selected from namespaces}
 
-\clearpage
-\section*{Exercise 2}
-\desc{Learn why streams can be used to determine the truth values of conditions, but not to assign values to bool variables.}
+We used the following code,
+\lstinputlisting[title=\texttt{main.cc}]{../ex1/main.cc}
 
+\textbf{Call fun and explain why \texttt{First::fun} is called. How would you call \texttt{Second::fun} instead?}\\
+\\
+Als een functie uit een namespace wordt aangeroepen zonder de namespace te speciferen, dan wordt de namespace van het argument van de functie gebruikt om de namespace van de functie te bepalen; het zogenaamde 'Koenig Lookup'. Aangezien het argument is gedeclareerd als type \texttt{First::Enum} wordt \texttt{First::fun} aangeroepen. Om \texttt{Second::fun} aan te roepen moet de namespace expliciet worden genoemd: \texttt{Second::fun(symbol)}.\\
 
-\clearpage
-\section*{Exercise 3}
-\desc{Learn to implement index operators}
+\textbf{In the namespaces slides (\#6) it is stated that \texttt{operator<<}'s use is simplified because of the Koenig lookup. Explain.}\\
+\\
+Zonder Koenig lookup zal de korte versie \texttt{std::cout << "Hello"} (net als de lange versie \texttt{operator<<(std::cout, "Hello")}) niet gebruikt kunnen worden. De insertion operator functie uit de standard namespace is dan niet bereikbaar zonder explicite functie call \texttt{std::operator<<(std::cout, "Hello")} voor zowel de korte als de lange versie.\\
 
-\clearpage
-\section*{Exercise 4}
-\desc{Learn to implement and spot opportunities for overloaded operators}
-
-
-\clearpage
-\section*{Exercise 5}
-\desc{Learn to insert/extract objects of your own class}
-
-
-\clearpage
-\section*{Exercise 7}
-\desc{Learn to implement and spot opportunities for overloaded operators}
+\textbf{Now, just above main, declare a function \texttt{void fun(First::Enum symbol)}. Compile this program. What happens? Why?}\\
+\\
+Er ontstaat een foutmelding vanwege ambiguititeit. De compiler weet nu niet of hij de functie uit de namespace \texttt{First} of de globale functie net boven main moet aanroepen. \textbf{Koenig lookup wordt ook hier gebruikt, de compiler ziet namelijk zowel de functie uit namespace \texttt{First} agv Koenig lookup en de globale functie als kandidaten voor de functie call in main.}
 
 
 \clearpage
