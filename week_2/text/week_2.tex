@@ -70,17 +70,22 @@
 \section*{Exercise 16}
 \desc{Learn how to end a program safely}
 
-We used the following code,
+\textbf{How do you end a program in such a situation?}
 
+In main wordt een object geconstruct en een functie aangeroepen die throwt. Deze functie doet vervolgens hetzelfde net als de functie daar weer in. In het diepste nested level wordt de throw operator daadwerkelijk aangeroepen, de exception gethrowd en vervolgens gerethrowd. Zodra de exception gethrowd wordt en de exception het try-block verlaat, wordt de destructor aangeroepen, net als in de levels daarboven.
+Op deze manier worden alle constructed objects netjes vernietigd.\\
+
+De volgende code verduidelijkt dit,
+
+\lstinputlisting[title=\texttt{demo/demo.h}]{../ex16/demo/demo.h}
+\lstinputlisting[title=\texttt{demo/demo.ih}]{../ex16/demo/demo.ih}
+\lstinputlisting[title=\texttt{demo/demo.cc}]{../ex16/demo/demo.cc}
+\lstinputlisting[title=\texttt{demo/destructor.cc}]{../ex16/demo/destructor.cc}
 \lstinputlisting[title=\texttt{main.ih}]{../ex16/main.ih}
 \lstinputlisting[title=\texttt{main.cc}]{../ex16/main.cc}
 \lstinputlisting[title=\texttt{function1.cc}]{../ex16/function1.cc}
 \lstinputlisting[title=\texttt{function2.cc}]{../ex16/function2.cc}
 \lstinputlisting[title=\texttt{function3.cc}]{../ex16/function3.cc}
-\lstinputlisting[title=\texttt{demo/demo.ih}]{../ex16/demo/demo.ih}
-\lstinputlisting[title=\texttt{demo/demo.h}]{../ex16/demo/demo.h}
-\lstinputlisting[title=\texttt{demo/demo.cc}]{../ex16/demo/demo.cc}
-\lstinputlisting[title=\texttt{demo/destructor.cc}]{../ex16/demo/destructor.cc}
 
 \clearpage
 \section*{Exercise 17}
