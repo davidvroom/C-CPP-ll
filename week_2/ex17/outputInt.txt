@@ -1,0 +1,6 @@
+test called
+Caught exception in main
+test called
+terminate called after throwing an instance of 'int'
+Aborted (core dumped)
+

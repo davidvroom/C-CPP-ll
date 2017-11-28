@@ -1,0 +1,7 @@
+#include <iostream>
+#include "showexcepts/showexcepts.h"
+#include <exception>
+
+using namespace std;
+
+void test();
