@@ -1,6 +1,7 @@
 #include "main.ih"
 
 int main(int argc, char **argv)
+try
 {
     cout << "3 x 3 matrix filled with zeros\n";
     Matrix mat(3, 3);
@@ -10,7 +11,7 @@ int main(int argc, char **argv)
     show(cout, Matrix::identity(4)) << '\n';
 
     cout << "Changing the 3 x 3 matrix into a 3 x 4 matrix filled with 1..12"
-                                                                        "\n";
+         << '\n';
     mat = Matrix{
                     { 1,  2,  3}, 
                     { 4,  5,  6}, 
@@ -23,4 +24,6 @@ int main(int argc, char **argv)
     cout << "Transposing the above matrix:\n";
     show(cout, mat.transpose()) << '\n';
 }
+catch (...)
+{}
 

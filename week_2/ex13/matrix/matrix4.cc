@@ -1,22 +1,31 @@
 #include "matrix.ih"
 
 Matrix::Matrix(IniList iniList)
+try
 :
     d_nRows(iniList.size()),
     d_nCols(iniList.begin()->size()),
-    d_data(new double[size()])
+    d_data(0)
 {
+    d_data = new double[size()];
     auto ptr = d_data;
     for (auto &list: iniList)
     {
         if (list.size() != d_nCols)
-        {
-            cerr << "Matrix(IniList): varying number of elements in rows\n";
-
-            exit(1);        // BAD STYLE, but see the exercise's text
-        }
-
+            throw "Matrix(IniList): varying number of elements in rows";
+        
         memcpy(ptr, &*list.begin() , list.size() * sizeof(double));
         ptr += list.size();
     }
+}
+catch (char const *message)
+{
+    cerr << "Exception: " << message << '\n'; 
+    delete[] d_data;
+}
+catch (...)
+{
+    cerr << "Memory allocation failed\n";
+    // delete[] operator is not required, because if memory allocation fails,
+    // memory is automatically returned
 }

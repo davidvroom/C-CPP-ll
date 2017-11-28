@@ -1,0 +1,7 @@
+Constructed 'object'
+Hello, this is 'object'
+Copy constructed 'object (copy)'
+Destructed 'object'
+Caught exception
+Hello, this is 'object (copy)'
+Destructed 'object (copy)'
