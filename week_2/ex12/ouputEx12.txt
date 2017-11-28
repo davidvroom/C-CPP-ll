@@ -1,9 +1,0 @@
-Number of objects increased by one (total: 1)
-Number of objects increased by one (total: 2)
-Number of objects increased by one (total: 3)
-Number of objects increased by one (total: 4)
-max. number of objects reached
-Number of objects decreased by one (total: 3)
-Number of objects decreased by one (total: 2)
-Number of objects decreased by one (total: 1)
-Number of objects decreased by one (total: 0)

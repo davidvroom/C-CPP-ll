@@ -90,7 +90,7 @@ We used the following code,
 \lstinputlisting[title=\texttt{main.ih}]{../ex12/main.ih}
 \lstinputlisting[title=\texttt{main.cc}]{../ex12/main.cc}
 
-%\lstinputlisting[title=\texttt{Output of main4.cc},language=bash, numbers=none]{../ex12/outputex12.txt}
+\lstinputlisting[title=\texttt{Output of main4.cc},language=bash, numbers=none]{../ex12/output.txt}
 
 \textbf{Explain why the solution is so simple}\\
 The solution is so simple because when an exception is thrown during the construction of an array of 10 Maxfour objects, stack unwinding will destroy the already allocated objects. No explicit call of the destructor is needed. Furthermore we do not need to keep track of the already allocated objects. 
@@ -114,14 +114,6 @@ We modified the following code of the matrix solution,
 \lstinputlisting[title=\texttt{matrix/tr.cc}]{../ex13/matrix/tr.cc}
 \lstinputlisting[title=\texttt{matrix/transpose.cc}]{../ex13/matrix/transpose.cc}
 
-\clearpage
-\section*{Exercise 14}
-\desc{}
-
-
-\clearpage
-\section*{Exercise 15}
-\desc{}
 
 \clearpage
 \section*{Exercise 16}
@@ -179,9 +171,5 @@ If \texttt{test()} throws an int (e.g. 1), the output shown below is produced. I
 See 10.10 Annotations ;-)
 
 \clearpage
-\section*{Exercise 19}
-\desc{}
 
-
-\clearpage
 \end{document}
