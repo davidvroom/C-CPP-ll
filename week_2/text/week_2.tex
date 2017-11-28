@@ -51,7 +51,21 @@
 
 \clearpage
 \section*{Exercise 12}
-\desc{}
+\desc{Study the way \texttt{delete[]} works}
+
+We used the following code,
+
+\lstinputlisting[title=\texttt{maxfour/maxfour.h}]{../ex12/maxfour/maxfour.h}
+\lstinputlisting[title=\texttt{maxfour/maxfour.ih}]{../ex12/maxfour/maxfour.ih}
+\lstinputlisting[title=\texttt{maxfour/data.cc}]{../ex12/maxfour/data.cc}
+\lstinputlisting[title=\texttt{maxfour/destructor.cc}]{../ex12/maxfour/destructor.cc}
+\lstinputlisting[title=\texttt{main.ih}]{../ex12/main.ih}
+\lstinputlisting[title=\texttt{main.cc}]{../ex12/main.cc}
+
+%\lstinputlisting[title=\texttt{Output of main4.cc},language=bash, numbers=none]{../ex12/outputex12.txt}
+
+\textbf{Explain why the solution is so simple}\\
+The solution is so simple because when an exception is thrown during the construction of an array of 10 Maxfour objects, stack unwinding will destroy the already allocated objects. No explicit call of the destructor is needed. Furthermore we do not need to keep track of the already allocated objects. 
 
 \clearpage
 \section*{Exercise 13}
