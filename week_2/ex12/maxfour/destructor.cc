@@ -6,5 +6,5 @@ Maxfour::~Maxfour()
 
     cout << "Number of objects decreased by one (total: "
          << s_nObj
-         <<")\n";
+         << ")\n";
 }

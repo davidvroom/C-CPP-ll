@@ -10,7 +10,7 @@ try
 
     cout << "Number of objects increased by one (total: "
          << s_nObj
-         <<")\n";
+         << ")\n";
 }
 catch (char const *message)
 {
