@@ -73,7 +73,31 @@
 
 \clearpage
 \section*{Exercise 17}
-\desc{}
+\desc{Learn to understand how throw lists and noexept work}
+
+A small class \texttt{ShowExcepts} is made. It has a constructor and two functions \texttt{asAthrowList()} and \texttt{asNoexcept()}, that behave as if \texttt{throw (int, std::string)} or the keyword \texttt{noexcept} is specified, respectively, while this is not actually specified. When this would be speciefied, the compiler generates additional code, and this code is now already provided by us, thus simualiting the use of the specifications. 
+The two member functions call a function \texttt{test()}, which prints that it is called and throws an exception (below the code, the output is discussed when this exception is an int or a double). 
+
+
+\lstinputlisting[title=\texttt{showexcepts/showexcepts.h}]{../ex17/showexcepts/showexcepts.h}
+\lstinputlisting[title=\texttt{showexcepts/showexcepts.ih}]{../ex17/showexcepts/showexcepts.ih}
+\lstinputlisting[title=\texttt{showexcepts/showexcepts1.cc}]{../ex17/showexcepts/showexcepts1.cc}
+\lstinputlisting[title=\texttt{showexcepts/asathrowlist.cc}]{../ex17/showexcepts/asathrowlist.cc}
+\lstinputlisting[title=\texttt{showexcepts/asnoexcept.cc}]{../ex17/showexcepts/asnoexcept.cc}
+\lstinputlisting[title=\texttt{main.ih}]{../ex17/main.ih}
+\lstinputlisting[title=\texttt{main.cc}]{../ex17/main.cc}
+\lstinputlisting[title=\texttt{test.cc}]{../ex17/test.cc}
+
+If \texttt{test()} throws a double (e.g. 1.5), the output shown below is produced. In \texttt{asathrowlist}, the double is not caught by the int or string catcher, but by the catch-all, throwing a \texttt{bad\_exception}. 
+
+In the second try block, \texttt{asnoexcept} is called, which calls \texttt{std::terminate()}, terminating the program. Therefore, the cout statement in \texttt{main}'s final catch clause is not reached. 
+
+\lstinputlisting[title={Output when \texttt{test()} throws a double (1.5)},language=bash, numbers=none]{../ex17/outputDouble.txt}
+
+If \texttt{test()} throws an int (e.g. 1), the output shown below is produced. In \texttt{asathrowlist}, the int is caught by the int catcher, and then rethrown. In \texttt{main}, it is then caught by the catch-all handler, giving the shown output. 
+
+\lstinputlisting[title={Output when \texttt{test()} throws an int (1)},language=bash, numbers=none]{../ex17/outputInt.txt}
+
 
 
 \clearpage

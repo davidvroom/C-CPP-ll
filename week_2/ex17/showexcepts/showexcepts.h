@@ -1,8 +1,6 @@
 #ifndef INCLUDED_SHOWEXCEPTS_
 #define INCLUDED_SHOWEXCEPTS_
 
-#include <string> 
-
 class ShowExcepts
 {
 	void (*d_fp)();

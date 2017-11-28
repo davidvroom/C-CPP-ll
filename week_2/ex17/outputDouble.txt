@@ -1,0 +1,6 @@
+test called
+std::bad_exception
+test called
+terminate called after throwing an instance of 'double'
+Aborted (core dumped)
+
