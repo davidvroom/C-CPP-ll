@@ -25,6 +25,7 @@ catch (char const *message)
 }
 catch (...)
 {
-    cerr << "Memory allocation failed\n"; 
-    delete[] d_data;
+    cerr << "Memory allocation failed\n";
+    // delete[] operator is not required, because if memory allocation fails,
+    // memory is automatically returned
 }

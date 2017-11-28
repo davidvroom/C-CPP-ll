@@ -40,7 +40,6 @@ class Matrix
 
         double &at(size_t rowIdx, size_t colIdx);   // NEW 
 
-    
     private:
         double &el(size_t row, size_t col) const;
         void transpose(double *dest) const;

@@ -1,4 +1,4 @@
-// this function offers the nothrow guarantee, because both 
+// This function offers the nothrow guarantee, because both
 // of its operations offer this.
 
 #include "matrix.ih"

@@ -1,7 +1,7 @@
-// the swap function satisfies the nothrow guarantee, because it uses 
+// The swap function satisfies the nothrow guarantee, because it uses
 // only primitive type operations and the C-function memcpy.
 // We add the noexcept specifier to indicate that our 
-// code was not written to cope with a throw
+// code was not written to cope with a throw.
 
 #include "matrix.ih"
 

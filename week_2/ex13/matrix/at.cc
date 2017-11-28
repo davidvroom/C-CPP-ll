@@ -5,14 +5,14 @@ double &Matrix::at(size_t rowIdx, size_t colIdx)
 	try
 	{
 		if (rowIdx >= d_nRows)
-			throw "Row index exceeded";
+			throw out_of_range{"Exception: Out of bounds"};
 		if (colIdx >= d_nCols)
-			throw "Column index exceeded";
+            throw out_of_range{"Exception: Out of bounds"};
 		return el(rowIdx, colIdx);
 	}
-	catch (char const *message)
-	{
-		cerr << "Exception: " << message << '\n';
-		throw;
-	}
+    catch (exception &exc)
+    {
+        cout << exc.what() << '\n';
+        throw;
+    }
 }

@@ -12,5 +12,4 @@ try
 catch (...)
 {
 	cerr << "Memory allocation failed\n"; 
-    delete[] d_data;
 }

@@ -1,6 +1,6 @@
 // This function offers the strong guarantee. 
 // The data is only modified if no exception is thrown by
-// the preceding operations/check
+// the preceding operations/checks
 
 #include "matrix.ih"
 
