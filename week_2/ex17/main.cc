@@ -7,7 +7,7 @@ int main()
 	{
 		object.asAthrowList();		// throws an exception
 	}
-	catch (bad_exception bad)
+	catch (bad_exception &bad)
 	{
 		cout << bad.what() << '\n';
 	}
