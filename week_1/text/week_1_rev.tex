@@ -53,6 +53,7 @@
 \section*{Exercise 1}
 \desc{Attain some familiarity with the way functions are selected from namespaces}
 
+In the previous attempt, the answer to the last question was incorrect / incomplete.\\\\
 We used the following code,
 \lstinputlisting[title=\texttt{main.cc}]{../ex1/main.cc}
 
@@ -66,7 +67,7 @@ Zonder Koenig lookup zal de korte versie \texttt{std::cout << "Hello"} (net als 
 
 \textbf{Now, just above main, declare a function \texttt{void fun(First::Enum symbol)}. Compile this program. What happens? Why?}\\
 \\
-Er ontstaat een foutmelding vanwege ambiguititeit. De compiler weet nu niet of hij de functie uit de namespace \texttt{First} of de globale functie net boven main moet aanroepen. \textbf{Koenig lookup wordt ook hier gebruikt, de compiler ziet namelijk zowel de functie uit namespace \texttt{First} agv Koenig lookup en de globale functie als kandidaten voor de functie call in main.}
+Er ontstaat een foutmelding vanwege ambiguiteit. De compiler ziet zowel de functie uit namespace \texttt{First} en de globale functie als kandidaten voor de functie aanroep in main. Koenig lookup wordt hier wel gebruikt: omdat het argument uit namespace \texttt{First} komt, wordt daarin gezocht naar een passende functie \texttt{fun}, en gevonden. Daarom is deze functie een kandidaat, en de passende functie in namespace \texttt{Second} niet. Echter, het resultaat van Koenig lookup wordt gecombineerd met het resultaat van 'gewone' unqualified lookup, welke alle scopes langs gaat. Deze vindt de passende globale functie \texttt{fun}, waardoor er in totaal twee mogelijkheden zijn, resulterend in een ambiguiteit.
 
 
 \clearpage
