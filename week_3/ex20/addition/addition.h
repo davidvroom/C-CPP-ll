@@ -8,7 +8,7 @@ class Addition
     friend Operations operator+(Operations const &lhs, Operations const &rhs); // 1
     friend Operations operator+(Operations &&lhs, Operations const &rhs);      // 2
 
-    protected:
+    public:
         Operations &operator+=(Operations const &rhs) &;                       // 3
         Operations operator+=(Operations const &rhs) &&;                       // 4
 };

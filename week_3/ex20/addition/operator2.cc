@@ -3,6 +3,6 @@
 Operations operator+(Operations &&lhs, Operations const &rhs)
 {
     Operations ret(move(lhs));
-    ret.Operations::add(rhs);
+    ret.add(rhs);
     return ret;
 }

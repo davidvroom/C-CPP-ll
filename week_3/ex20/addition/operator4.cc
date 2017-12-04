@@ -2,6 +2,7 @@
 
 Operations Addition::operator+=(Operations const &rhs) &&
 {
-    add(rhs);
-    return move(*this);
+    Operations tmp{ *this };
+    tmp.add(rhs);
+    return move(static_cast<Operations &>(*this));
 }

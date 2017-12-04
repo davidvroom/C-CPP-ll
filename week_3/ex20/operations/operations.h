@@ -9,10 +9,12 @@ class Operations: public Binops
 // which it is declared.
     friend class Binops;
 
-    Operations() = default;
+    public:
+        Operations() = default;
 
-    void add(Operations const &rhs);
-    void sub(Operations const &lhs);
+    private:
+        void add(Operations const &rhs);
+        void sub(Operations const &lhs);
 };
 
 inline void Operations::add(Operations const &rhs)
