@@ -7,3 +7,6 @@ using namespace std;
 void function1();
 void function2();
 void function3();
+
+enum FatalError
+{};

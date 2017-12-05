@@ -1,0 +1,76 @@
+\documentclass[12pt]{article}
+\usepackage[left=1in, right=1in]{geometry}
+
+\usepackage{url}
+
+%\usepackage{arydshln}
+
+\usepackage{graphicx}
+
+\usepackage{color}
+\definecolor{light-gray}{gray}{0.30}
+
+\usepackage{listings}
+\lstset{
+	frame=leftline,
+	frameround=ttff,
+	numbers=left,
+	language=C++,
+	showstringspaces=False,
+	extendedchars=False,
+	numberstyle=\footnotesize,
+	basicstyle=\small\ttfamily,
+	commentstyle=\color{light-gray}\slshape,
+	belowskip=1.5em,
+	aboveskip=1.5em,
+	fontadjust,
+	tabsize=4,		%added for proper tab alligning
+	xleftmargin=0cm,
+	xrightmargin=0cm
+}
+
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{
+	\fancyhead[L]{Previous attempt graded by FB.}
+	\renewcommand{\headrulewidth}{0pt}
+}
+
+\newcommand{\desc}[1]{\textit{#1} \vspace{1em}}
+
+\title{\itshape Exercises week 2 - Revision}
+
+\author{
+	Klaas Isaac Bijlsma \\ s2394480
+	\and
+	David Vroom \\ s2309939
+}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Exercise 16}
+\desc{Learn how to end a program safely}
+
+\textbf{How do you end a program in such a situation?}
+
+In main wordt een object geconstrueerd en een functie aangeroepen die throwt. Deze functie doet vervolgens hetzelfde net als de functie daar weer in. In het diepste nested level wordt daadwerkelijk gethrowd, namelijk een lege, globale enum \texttt{FatalError}. Dit is om te voorkomen dat een vrij gebruikelijk exception type in tussenliggende code, eventueel externe code zoals van een library, wordt afgevangen. In main wordt deze enum exception gevangen, waardoor alle geconstueerde objecten in tussenliggende levels netjes vernietigd worden en het programma dus veilig stopt.\\
+Deze methode is niet volledig 'bullet proof', omdat het in theorie mogelijk is dat de enum onderweg al wordt afgevangen, bijvoorbeeld in de code van de externe library. Behalve dat er ongewenste operaties kunnen worden uitgevoerd kan het ook zo zijn dat de exception niet gerethrowd wordt, en dan komt de exception niet aan in main en stopt het programma niet. Bij een zelf gedefinieerde enum is het echter zeer onwaarschijnlijk dat dit het geval is. \\
+Het werkt ook niet als de enum onderweg gevangen wordt door een catch-all die niet rethrowt. Echter zal dit in de praktijk niet moeten voorkomen, dit is namelijk bad practice. \\
+\\
+Hieronder volgt onze code,
+
+\lstinputlisting[title=\texttt{demo/demo.h}]{../ex16/demo/demo.h}
+\lstinputlisting[title=\texttt{demo/demo.ih}]{../ex16/demo/demo.ih}
+\lstinputlisting[title=\texttt{demo/demo.cc}]{../ex16/demo/demo.cc}
+\lstinputlisting[title=\texttt{demo/destructor.cc}]{../ex16/demo/destructor.cc}
+\lstinputlisting[title=\texttt{main.ih}]{../ex16/main.ih}
+\lstinputlisting[title=\texttt{main.cc}]{../ex16/main.cc}
+\lstinputlisting[title=\texttt{function1.cc}]{../ex16/function1.cc}
+\lstinputlisting[title=\texttt{function2.cc}]{../ex16/function2.cc}
+\lstinputlisting[title=\texttt{function3.cc}]{../ex16/function3.cc}
+
+
+
+\end{document}
