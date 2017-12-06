@@ -55,7 +55,9 @@
 
 \textbf{How do you end a program in such a situation?}
 
-In main wordt een object geconstrueerd en een functie aangeroepen die throwt. Deze functie doet vervolgens hetzelfde net als de functie daar weer in. In het diepste nested level wordt daadwerkelijk gethrowd, namelijk een lege, globale enum \texttt{FatalError}. Dit is om te voorkomen dat een vrij gebruikelijk exception type in tussenliggende code, eventueel externe code zoals van een library, wordt afgevangen. In main wordt deze enum exception gevangen, waardoor alle geconstueerde objecten in tussenliggende levels netjes vernietigd worden en het programma dus veilig stopt.\\
+In de eerste poging genereerden we een \texttt{char const *} exception, waardoor het niet zeker was of het programma wel echt stopt.\\
+
+In main wordt een object geconstrueerd en een functie aangeroepen die throwt. Deze functie doet vervolgens hetzelfde net als de functie daar weer in. In het diepste nested level wordt daadwerkelijk gethrowd, namelijk een lege, globale enum \texttt{FatalError}. Dit is om te voorkomen dat een vrij gebruikelijk exception type in tussenliggende code, eventueel externe code zoals van een library, wordt afgevangen. In main wordt deze enum exception gevangen, waardoor alle geconstueerde objecten in tussenliggende levels netjes vernietigd worden en het programma dus veilig stopt. Dit is te zien aan de output die onze main functie genereert, welke helemaal onderaan is gegeven.\\
 Deze methode is niet volledig 'bullet proof', omdat het in theorie mogelijk is dat de enum onderweg al wordt afgevangen, bijvoorbeeld in de code van de externe library. Behalve dat er ongewenste operaties kunnen worden uitgevoerd kan het ook zo zijn dat de exception niet gerethrowd wordt, en dan komt de exception niet aan in main en stopt het programma niet. Bij een zelf gedefinieerde enum is het echter zeer onwaarschijnlijk dat dit het geval is. \\
 Het werkt ook niet als de enum onderweg gevangen wordt door een catch-all die niet rethrowt. Echter zal dit in de praktijk niet moeten voorkomen, dit is namelijk bad practice. \\
 \\
@@ -70,6 +72,8 @@ Hieronder volgt onze code,
 \lstinputlisting[title=\texttt{function1.cc}]{../ex16/function1.cc}
 \lstinputlisting[title=\texttt{function2.cc}]{../ex16/function2.cc}
 \lstinputlisting[title=\texttt{function3.cc}]{../ex16/function3.cc}
+
+\lstinputlisting[title=\texttt{Output of main.cc},language=bash, numbers=none]{../ex16/output.txt}
 
 
 
