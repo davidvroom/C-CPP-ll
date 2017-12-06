@@ -5,6 +5,9 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(SOURCE_FILES main.cc main.ih subtraction/subtraction.h binops/binops.h
         addition/addition.h operations/operations.h addition/addition.ih
-        addition/operator1.cc addition/operator2.cc addition/operator3.cc
-        addition/operator4.cc)
+        binops/binopsadd.cc binops/binops.ih addition/operatoraddis1.cc
+        addition/operatoraddis2.cc addition/operatoradd1.cc addition/operatoradd2.cc
+        binops/binopssub.cc subtraction/operatorsub1.cc subtraction/operatorsub2.cc
+        subtraction/operatorsubis1.cc subtraction/operatorsubis2.cc
+        subtraction/subtraction.ih)
 add_executable(ex20 ${SOURCE_FILES})

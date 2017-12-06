@@ -1,7 +1,7 @@
 #ifndef EX20_ADDITION_H
 #define EX20_ADDITION_H
 
-#include "../operations/operations.h"
+class Operations;
 
 class Addition
 {
@@ -9,8 +9,8 @@ class Addition
     friend Operations operator+(Operations &&lhs, Operations const &rhs);      // 2
 
     public:
-        Operations &operator+=(Operations const &rhs) &;                       // 3
-        Operations operator+=(Operations const &rhs) &&;                       // 4
+        Operations &operator+=(Operations const &rhs) &;                       // 1
+        Operations operator+=(Operations const &rhs) &&;                       // 2
 };
 
 #endif

@@ -1,13 +1,12 @@
 #ifndef EX20_OPERATIONS_H
 #define EX20_OPERATIONS_H
 
+#include <iostream>
 #include "../binops/binops.h"
 
 class Operations: public Binops
 {
-// private: only accessible by member functions and friends of the class in
-// which it is declared.
-    friend class Binops;
+    friend Binops;
 
     public:
         Operations() = default;
@@ -19,12 +18,12 @@ class Operations: public Binops
 
 inline void Operations::add(Operations const &rhs)
 {
-
+    std::cout << "addition\n";
 }
 
 inline void Operations::sub(Operations const &rhs)
 {
-
+    std::cout << "subtraction\n";
 }
 
 #endif

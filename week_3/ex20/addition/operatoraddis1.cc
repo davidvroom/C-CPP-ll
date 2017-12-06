@@ -2,8 +2,7 @@
 
 Operations &Addition::operator+=(Operations const &rhs) &
 {
-    //Operations tmp = static_cast<Operations &>(*this);
-    add(rhs);
-        //.Operations::add(rhs);
+    cout << "operatoraddis1 calls: ";
+    static_cast<Binops &>(*this).binopsAdd(rhs);
     return static_cast<Operations &>(*this);
 }

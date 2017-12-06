@@ -3,11 +3,15 @@
 
 #include "../addition/addition.h"
 #include "../subtraction/subtraction.h"
-#include "../operations/operations.h"
 
 class Binops: public Addition, public Subtraction
 {
     friend class Addition;
+    friend class Subtraction;
+
+    private:
+        void binopsAdd(Operations const &rhs);
+        void binopsSub(Operations const &rhs);
 };
 
 #endif
