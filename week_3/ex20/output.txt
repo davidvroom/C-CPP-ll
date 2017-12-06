@@ -1,0 +1,8 @@
+operatoraddis1 calls: addition
+operatoraddis2 calls: addition
+operatoradd1 calls: operatoraddis1 calls: addition
+operatoradd2 calls: operatoraddis1 calls: addition
+operatorsubis1 calls: subtraction
+operatorsubis2 calls: subtraction
+operatorsub1 calls: operatorsubis1 calls: subtraction
+operatorsub2 calls: operatorsubis1 calls: subtraction
