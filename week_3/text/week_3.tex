@@ -10,6 +10,8 @@
 \usepackage{color}
 \definecolor{light-gray}{gray}{0.30}
 
+\usepackage{verbatim}
+
 \usepackage{listings}
 \lstset{
 	frame=leftline,
@@ -49,7 +51,21 @@
 \section*{Exercise 20}
 \desc{Learn the implications of using friends}
 
-We used the following code,
+The exercise states that the classes \texttt{Addition} and \texttt{Subtraction}, which implement the binary addition and subtraction operators, are base classes of a class \texttt{Binops}. Furthermore, a class \texttt{Operations} implements the private functions \texttt{add} and \texttt{sub}, and inherits from \texttt{Binops}. Also, \texttt{Operations} declares \texttt{Binops} a friend class. 
+
+\begin{itemize}
+	\item
+	An operator like \texttt{Addition::operator+=} has to call the private \texttt{add} member of \texttt{Operations}, but \texttt{Operations} does not declare \texttt{Addition} as a friend class. \\
+	We solved this problem by defining a wrapper function \texttt{binopsAdd} in \texttt{Binops}, which calls \texttt{add}. This is allowed, since \texttt{Binops} is a friend class of \texttt{Operations}. Then, \texttt{Addition} is declared a friend class of \texttt{Binops}, which is therefore allowed to call \texttt{binopsAdd}, and by that it calls \texttt{add}. Ommiting the wrapper function does not work, since \texttt{Addition}, a friend class of a friend class of \texttt{Operations}, can not call \texttt{add}. The problem is handled in a similar way for \texttt{Subtraction}.  
+	\item
+	There is however a fundamental problem with this design. By defining the class hierarcy as stated in the exercise, multiple friendships among classes have to be defined. In this way, a strong coupling between the classes is obtained, which is undesirable. 
+
+	\begin{comment}
+	In fact, the class hierarchy should be the other way around, such that \texttt{Operations} is the base class defining the private \texttt{add} and \texttt{sub} functions, from which \texttt{Binops} inherits. \texttt{Addition} and \texttt{Subtraction} then inherit from \texttt{Binops}. In this way, no friend declarations causing extra coupling have to be defined. 
+	\end{comment}
+	\item
+	Below we provide the class interfaces of \texttt{Binops}, \texttt{Addition} and \texttt{Subtraction}.
+\end{itemize}
 
 \lstinputlisting[title=\texttt{binops/binops.h}]{../ex20/binops/binops.h}
 \lstinputlisting[title=\texttt{addition/addition.h}]{../ex20/addition/addition.h}
@@ -60,7 +76,7 @@ We used the following code,
 \section*{Exercise 21}
 \desc{Learn to implement a class hierarchy using friends in the final derived class}
 
-We used the following code,
+Below we provide the implementations of the classes \texttt{Binops}, \texttt{Addition} and \texttt{Subtraction}. (Not the free binary operators, see the next exercise for those.)
 
 \lstinputlisting[title=\texttt{binops/binops.ih}]{../ex20/binops/binops.ih}
 \lstinputlisting[title=\texttt{binops/binopsadd.cc}]{../ex20/binops/binopsadd.cc}
@@ -78,13 +94,16 @@ We used the following code,
 \section*{Exercise 22}
 \desc{Learn to use a class hierarchy using friends in the final derived class}
 
-We used the following code,
+Below we provide the remaining members of the classes \texttt{Binops}, \texttt{Addition} and \texttt{Subtraction}. The members \texttt{add} and \texttt{sub} are implemented inline, and therefore we provide the interface of \texttt{Operations} as well. After those listings, we provide a main function calling the different binary operators, and the output it produces. From that we see that the code works as intended. 
 
 \lstinputlisting[title=\texttt{addition/operatoradd1.cc}]{../ex20/addition/operatoradd1.cc}
 \lstinputlisting[title=\texttt{addition/operatoradd2.cc}]{../ex20/addition/operatoradd2.cc}
 \lstinputlisting[title=\texttt{subtraction/operatorsub1.cc}]{../ex20/subtraction/operatorsub1.cc}
-\lstinputlisting[title=\texttt{subtraction/operatorad2.cc}]{../ex20/subtraction/operatorsub2.cc}
+\lstinputlisting[title=\texttt{subtraction/operatorsub2.cc}]{../ex20/subtraction/operatorsub2.cc}
+\lstinputlisting[title=\texttt{operations/operations.h}]{../ex20/operations/operations.h}
 
+\lstinputlisting[title=\texttt{main.cc}]{../ex20/main.cc}
+\lstinputlisting[title=\texttt{Output of main.cc},language=bash, numbers=none]{../ex20/output.txt}
 \clearpage
 
 \section*{Exercise 23}
@@ -94,6 +113,7 @@ We used the following code,
 
 \section*{Exercise 24}
 \desc{Learn to initialize \texttt{string} objects with \texttt{new}}
+
 We used the following code,
 
 \lstinputlisting[title=\texttt{main.ih}]{../ex24/main.ih}
