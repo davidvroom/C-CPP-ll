@@ -7,7 +7,7 @@ try
     function1();
     cout << "Not executed\n";
 }
-catch (...)
+catch (FatalError fe)
 {
     cout << "Program stops\n";
 }
