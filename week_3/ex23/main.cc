@@ -2,49 +2,59 @@
 
 int main()
 {
-    while (cin)
-    {
-        cout << "Please enter: value1 'operator' value2:\n";
-
-        string lhs;
-        double rhs;
-        string op;
-
-        cin >> lhs >> op >> rhs;
-
-        Operations objLhs(lhs);
-        Operations objRhs(rhs);
-
-
-        if (op == "+")
-            Operations result = objLhs + objRhs;
-        if (op == "-")
-            Operations result = objLhs - objRhs;
-        if (op == "+=")
-
-
-        cout << '\n' << result.value() << '\n';
-
-    }
     double lhs;
-    cout << "lhs ";
-    cin >> lhs;
-    Operations vall(lhs);
+    double rhs;
+    double rrhs;
 
     string op;
-    cout << "operation ";
-    cin >> op;
+    string op2;
 
-    double rhs;
-    cout << "rhs ";
-    cin >> rhs;
-    Operations valr(rhs);
+    Operations result;
 
-    if (op == "+")
+    if (cin >> lhs >> op >> rhs >> op2 >> rrhs)
     {
-        //cout << lhs+rhs;
-        Operations result = valr + vall;
+        Operations objLhs{ lhs };
+        Operations objRhs{ rhs };
+
+        if (op == "+" and op2 == "+")
+        {
+            result = objLhs + objRhs + Operations{ rrhs }; // operator+ 2
+            cout << '\n' << result.value() << '\n';
+        }
+
+
+        //if (op == "+=")
+         //   Operations{ lhs } += obj;
+
+        //if (op == "-")
+        //    result = Operations{ lhs } - Operations{ rhs };
+
+    }
+
+    if (cin >> op >> rhs)
+    {
+        if (op == "+")
+            result += Operations{ rhs }; // operator+= 1
+
+
+        //if (op == "-")
+        //    result -= Operations{ lhs };
+
         cout << '\n' << result.value() << '\n';
     }
+
+    string op3;
+    double val2;
+    if (cin >> op >> rhs >> op3 >> val2)
+    {
+        if (op == "+" and op3 == "+=")
+            result += Operations{ rhs } += Operations{ val2 };
+
+        cout << '\n' << result.value() << '\n';
+    }
+
+
+
+        //cout << '\n' << result.value() << '\n';
 
 }

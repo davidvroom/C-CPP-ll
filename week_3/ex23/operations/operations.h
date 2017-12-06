@@ -13,6 +13,7 @@ class Operations: public Binops
     public:
         Operations() = default;
         explicit Operations(double initial);
+
         double value() const;
 
     private:
