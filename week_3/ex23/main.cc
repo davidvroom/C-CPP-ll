@@ -1,4 +1,6 @@
-#include "main.ih"
+#include "operations/operations.h"
+
+using namespace std;
 
 int main()
 {
@@ -11,7 +13,7 @@ int main()
 
     Operations result;
 
-    cout << "\nPlease give something in the form: val1 +/- val2 +/- val3 +/-\n";
+    cout << "Please give something in the form: val1 +or- val2 +or- val3\n";
 
     while (cin >> val1 >> op1 >> val2 >> op2 >> val3)
     {
@@ -33,6 +35,6 @@ int main()
 
         cout << "\nResult: " << result.value() << '\n';
         cout << "\nPlease give something in the form: "
-                "val1 +/- val2 +/- val3 +/-\n";
+                "val1 +or- val2 +or- val3\n";
     }
 }

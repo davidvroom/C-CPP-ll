@@ -1,0 +1,19 @@
+Please give something in the form: val1 +or- val2 +or- val3
+1+2+3
+operatoradd1 called
+operatoraddis2 called
+operatoradd2 called
+operatoraddis1 called
+
+Result: 6
+
+Please give something in the form: val1 +or- val2 +or- val3
+1-2-3
+operatorsub1 called
+operatorsubis2 called
+operatorsub2 called
+operatorsubis1 called
+
+Result: -4
+
+Please give something in the form: val1 +or- val2 +or- val3

@@ -109,9 +109,19 @@ Below we provide the remaining members of the classes \texttt{Binops}, \texttt{A
 \section*{Exercise 23}
 \desc{Learn to use a class hierarchy using friends in the final derived class}
 
-We made a basic calculator. We used the code of the previous exercises with minor modifications in the cout statements. We added a datamember, constructor and an accessor to the class \texttt{Operations}, to store and access values. Below you find a simple main function which acts as an interactive basic calculator. Its output shows that all operators are called and work as intended.\\
+We made a basic calculator. We used the code of the previous exercises with some modifications in the cout statements. Also, we added a datamember, constructor and an accessor to the class \texttt{Operations}, to store and access values. To make sure that all different operators are called by the calculater, the implementation of \texttt{operatoradd1} and \texttt{operatorsub1} were slightly changed. The modified code is given below. Moreover, you find a simple main function which acts as an interactive basic calculator. Its output shows that all operators are called and work as intended.\\
 
-We used the following (modified) code,
+To add a new member...
+
+\lstinputlisting[title=\texttt{addition/operatoradd1.cc}]{../ex23/addition/operatoradd1.cc}
+\lstinputlisting[title=\texttt{subtraction/operatorsub1.cc}]{../ex23/subtraction/operatorsub1.cc}
+\lstinputlisting[title=\texttt{operations/operations.h}]{../ex23/operations/operations.h}
+\lstinputlisting[title=\texttt{operations/operations.ih}]{../ex23/operations/operations.ih}
+\lstinputlisting[title=\texttt{operations/operations.cc}]{../ex23/operations/operations.cc}
+
+\lstinputlisting[title=\texttt{main.cc}]{../ex23/main.cc}
+\lstinputlisting[title=\texttt{Output of main.cc},language=bash, numbers=none]{../ex23/output.txt}
+
 
 
 
