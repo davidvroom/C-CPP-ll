@@ -23,7 +23,6 @@ class Operations: public Binops
 
 inline void Operations::add(Operations const &rhs)
 {
-    //std::cout << "addition\n";
     d_data += rhs.d_data;
 }
 

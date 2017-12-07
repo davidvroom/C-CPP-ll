@@ -2,35 +2,37 @@
 
 int main()
 {
-    double lhs;
-    double rhs;
-    double rrhs;
+    double val1;
+    double val2;
+    double val3;
 
-    char op;
+    char op1;
     char op2;
 
     Operations result;
 
-    while (cin >> lhs >> op >> rhs >> op2 >> rrhs)
+    cout << "\nPlease give something in the form: val1 +/- val2 +/- val3 +/-\n";
+
+    while (cin >> val1 >> op1 >> val2 >> op2 >> val3)
     {
-        cout << "\nPlease give something in the form: val1 +/- val2 +/- val3 +/-\n";
+        Operations obj1{val1};
+        Operations obj2{val2};
+        Operations obj3{val3};
 
-        Operations obj1{lhs};
-        Operations obj2{rhs};
-        Operations obj3{rrhs};
+        if (op1 == '+' and op2 == '+')
+            result = obj1 + obj2 + obj3;
 
-        if (op == '+' and op2 == '+')
-            result = obj1 + obj2 + obj3; // operator+ 2
+        if (op1 == '-' and op2 == '-')
+            result = obj1 - obj2 - obj3;
 
-        if (op == '-' and op2 == '-')
-            result = obj1 - obj2 - obj3; // operator+ 2
+        if (op1 == '+' and op2 == '-')
+            result = obj1 + obj2 - obj3;
 
-        if (op == '+' and op2 == '-')
-            result = obj1 + obj2 - obj3; // operator+ 2
+        if (op1 == '-' and op2 == '+')
+            result = obj1 - obj2 + obj3;
 
-        if (op == '-' and op2 == '+')
-            result = obj1 - obj2 + obj3; // operator+ 2
-
-        cout << '\n' << result.value() << '\n';
+        cout << "\nResult: " << result.value() << '\n';
+        cout << "\nPlease give something in the form: "
+                "val1 +/- val2 +/- val3 +/-\n";
     }
 }

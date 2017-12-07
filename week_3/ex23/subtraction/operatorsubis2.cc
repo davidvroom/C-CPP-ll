@@ -2,7 +2,7 @@
 
 Operations Subtraction::operator-=(Operations const &rhs) &&
 {
-    cout << "operatorsubis2 calls: ";
+    cout << "operatorsubis2 called\n";
     static_cast<Binops &>(*this).binopsSub(rhs);
     return move(static_cast<Operations &>(*this));
 }
