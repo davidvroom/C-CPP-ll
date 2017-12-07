@@ -109,9 +109,11 @@ Below we provide the remaining members of the classes \texttt{Binops}, \texttt{A
 \section*{Exercise 23}
 \desc{Learn to use a class hierarchy using friends in the final derived class}
 
-We made a basic calculator. We used the code of the previous exercises with some modifications in the cout statements. Also, we added a datamember, constructor and an accessor to the class \texttt{Operations}, to store and access values. To make sure that all different operators are called by the calculater, the implementation of \texttt{operatoradd1} and \texttt{operatorsub1} were slightly changed. The modified code is given below. Moreover, you find a simple main function which acts as an interactive basic calculator. Its output shows that all operators are called and work as intended.\\
+We made a basic calculator with the code of the previous exercises, with some modifications in the cout statements. Also, we added a data member, constructor and an accessor to the class \texttt{Operations}, to store and access values. To make sure that all different operators are called by the calculater, the implementation of \texttt{operatoradd1} and \texttt{operatorsub1} were slightly changed. The modified code is given below. Moreover, you find a simple main function which acts as an interactive basic calculator. Its output shows that all operators are called and work as intended.\\
 
-To add a new member...
+\textbf{Briefly describe the steps that must be performed to add another operator (like multiplication) to the calculator (i.e., to the class \texttt{Operations}).} \\
+In line with the exercise, one has to define a new base class \texttt{Multiplication}, and let \texttt{Binops} (publicly) inherit from this class. In \texttt{Operations}, a private member function \\\texttt{void mul(Operations const \&rhs)} should be added that does the multiplication. Then in \texttt{Binops}, a wrapper function should be defined that calls \texttt{mul}. Also, it should define \texttt{Multiplication} a friend class. Then, the multiplication operators in \texttt{Multiplication} can call this wrapper function. \\
+In our opinion, a much simpler solution is to define an overloaded multiplication operator and compound assignment operator in the class \texttt{Operations}.  
 
 \lstinputlisting[title=\texttt{addition/operatoradd1.cc}]{../ex23/addition/operatoradd1.cc}
 \lstinputlisting[title=\texttt{subtraction/operatorsub1.cc}]{../ex23/subtraction/operatorsub1.cc}
