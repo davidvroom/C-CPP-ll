@@ -29,7 +29,7 @@ inline void Operations::add(Operations const &rhs)
 
 inline void Operations::sub(Operations const &rhs)
 {
-    std::cout << "subtraction\n";
+    d_data -= rhs.d_data;
 }
 
 inline double Operations::value() const
