@@ -1,0 +1,4 @@
+#include "bistreambuffer.h"
+
+using namespace std;
+
