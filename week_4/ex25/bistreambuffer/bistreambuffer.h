@@ -6,14 +6,7 @@
 class BiStreamBuffer: public std::streambuf 
 {
     public:
-        BiStreamBuffer();
-
-    private:
+       BiStreamBuffer();
 };
-
-/*inline BiStreamBuffer::BiStreamBuffer()
-{
-
-}*/
         
 #endif

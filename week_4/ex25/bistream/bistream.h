@@ -6,10 +6,14 @@
 
 class BiStream: private BiStreamBuffer, public std::ostream
 {
-    public:
-        BiStream(std::ofstream one, std::ofstream two);		// o or of?
+	friend BiStream &operator<<(BiStream &bistream, char const *txt);
 
-    private:
+	std::ofstream &d_one;
+	std::ofstream &d_two;
+
+    public:
+        BiStream(std::ofstream &one, std::ofstream &two);
 };
-        
+   
+
 #endif

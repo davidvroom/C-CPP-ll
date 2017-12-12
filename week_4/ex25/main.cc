@@ -4,11 +4,16 @@
 using namespace std;
 
 int main()
-    {
-        ofstream one("one");
-        ofstream two("two");
+{
+    ofstream one("one");
+    ofstream two("two");
 
-        BiStream ms(one, two);
+    BiStream ms(one, two);
 
-        ms << "Hello world" << endl;
-    }
+    ms << "Hello world" << endl;
+}
+
+// Output:
+// --------------------------
+// BiStreamBuffer constructed
+// BiStream constructed
