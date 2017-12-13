@@ -1,10 +1,7 @@
 #include "bistreambuffer.ih"
-#include <iostream>
 
-BiStreamBuffer::BiStreamBuffer(std::ofstream &one, std::ofstream &two)
+BiStreamBuffer::BiStreamBuffer(std::ostream &one, std::ostream &two)
 :
-	d_one(one),
-	d_two(two)
-{
-	std::cout << "BiStreamBuffer constructed\n";
-}
+	d_one(&one),
+	d_two(&two)
+{}

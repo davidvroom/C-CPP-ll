@@ -2,11 +2,15 @@
 
 int BiStreamBuffer::overflow(int c)
 {
-    sync();
-    if (c != EOF)
+    if (c == EOF)
     {
-        *pptr() = static_cast<char>(c);
-        pbump(1);
+        d_one->flush();
+        d_two->flush();
+    }
+    else
+    {
+        d_one->put(c);
+        d_two->put(c);
     }
     return c;
 }

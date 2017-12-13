@@ -12,8 +12,3 @@ int main()
 
     ms << "Hello world" << endl;
 }
-
-// Output:
-// --------------------------
-// BiStreamBuffer constructed
-// BiStream constructed

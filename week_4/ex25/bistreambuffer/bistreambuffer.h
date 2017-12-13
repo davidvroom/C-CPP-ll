@@ -5,11 +5,11 @@
 
 class BiStreamBuffer: public std::streambuf 
 {
-    std::ofstream &d_one;
-    std::ofstream &d_two;
+    std::ostream *d_one;
+    std::ostream *d_two;
 
     public:
-       BiStreamBuffer(std::ofstream &one, std::ofstream &two);
+       BiStreamBuffer(std::ostream &one, std::ostream &two);
 
     private:
         int overflow(int c) override;

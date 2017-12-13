@@ -2,22 +2,18 @@
 
 streamsize IFdStreambuf::xsgetn(char *dest, streamsize n)
 {
-	int nread = 0;
+	if (n == 0)
+		return 0;
 
-	while (n)
-	{
-		if (!in_avail())
-			if (underflow() == EOF)
-				break;
+	int nBuffer = in_avail(); // number of retrievable chars in buffer
 
-		int avail = in_avail();
-		if (avail > n)
-			avail = n;
-		memcpy(dest + nread, gptr(), avail);
-		gbump(avail);
-		nread += avail;
-		n -= avail;
-	}
-	cout << "xsgetn\n";
-	return nread;
+	if (nBuffer > n)	      // more chars in buffer than requested
+		nBuffer = n;
+							  // copy what's available in own buffer
+	memcpy(dest, gptr(), nBuffer);
+	gbump(nBuffer);           // update pointer
+							  // try to read some more from FD
+	int nFile = read(d_fd, dest + nBuffer, n - nBuffer);
+
+	return nBuffer + nFile;
 }

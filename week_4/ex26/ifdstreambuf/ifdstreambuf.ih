@@ -1,7 +1,5 @@
 #include "ifdstreambuf.h"
-#include <unistd.h>
-#include <iostream>
-
-#include <string.h>
+#include <unistd.h>         // read()
+#include <string.h>         // memcpy()
 
 using namespace std;
