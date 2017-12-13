@@ -2,6 +2,6 @@
 
 IFdStreambuf::IFdStreambuf(Mode mode)
 :
-    d_fd(STDIN_FILENO),		// ?
+    d_fd(-1),		// set later by open
     d_mode(mode)
 {}

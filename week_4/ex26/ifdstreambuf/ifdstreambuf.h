@@ -21,9 +21,11 @@ class IFdStreambuf: public std::streambuf
         explicit IFdStreambuf(int fd, Mode mode = KEEP_FD);
         virtual ~IFdStreambuf();
         int close();
+        void open(int fd, Mode mode = KEEP_FD);
 
     private:
         int underflow() override;
+        std::streamsize xsgetn(char *dest, std::streamsize n) override;
 };
 
 #endif
