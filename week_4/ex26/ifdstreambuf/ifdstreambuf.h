@@ -17,8 +17,8 @@ class IFdStreambuf: public std::streambuf
         Mode d_mode;
 
     public:
-        explicit IFdStreambuf(Mode mode = KEEP_FD);
-        explicit IFdStreambuf(int fd, Mode mode = KEEP_FD);
+        explicit IFdStreambuf(Mode mode = KEEP_FD);         // 1
+        explicit IFdStreambuf(int fd, Mode mode = KEEP_FD); // 2
         virtual ~IFdStreambuf();
         int close();
         void open(int fd, Mode mode = KEEP_FD);
