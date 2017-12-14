@@ -1,0 +1,3 @@
+#include "ofdstream.h"
+
+using namespace std;
