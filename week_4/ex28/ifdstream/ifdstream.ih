@@ -1,0 +1,3 @@
+#include "ifdstream.h"
+
+using namespace std;

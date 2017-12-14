@@ -3,14 +3,15 @@
 
 #include <streambuf>
 
-enum Mode
-{
-    KEEP_FD,
-    CLOSE_FD
-};
-
 class OFdStreambuf: public std::streambuf
 {
+    public:
+        enum Mode
+        {
+            KEEP_FD,
+            CLOSE_FD
+        };
+
     protected:
         int d_fd;
         Mode d_mode;

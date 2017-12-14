@@ -5,12 +5,12 @@
 int main()
 {
 	int fd = open("test.txt", O_RDONLY);
-	IFdStreambuf fds(fd, KEEP_FD);
+	IFdStreambuf fds(fd, IFdStreambuf::KEEP_FD);
     std::istream is(&fds);
     std::cout << is.rdbuf() << std::endl;
 
 	fd = open("test2.txt", O_RDONLY);
-    fds.open(fd, KEEP_FD);
+    fds.open(fd, IFdStreambuf::KEEP_FD);
 
     std::cout << is.rdbuf() << std::endl;
 }
