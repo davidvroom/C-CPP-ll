@@ -5,7 +5,7 @@
 int main()
 {
     int fd = open("test.txt", O_RDWR | O_CREAT, S_IRWXU);
-    OFdStreambuf fds(fd, KEEP_FD);
+    OFdStreambuf fds(fd, OFdStreambuf::KEEP_FD);
     std::ostream os(&fds);
     
     os << "Hello world toch h";// << std::endl;

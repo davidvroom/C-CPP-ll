@@ -3,8 +3,8 @@
 
 int main()
 {
-    IFdStream in{ 0 };
-    OFdStream out{ 1 };
+    IFdStream in{ 0 };		// keyboard
+    OFdStream out{ 1 };		// screen
 
     std::string str;
     while (getline(in, str))
