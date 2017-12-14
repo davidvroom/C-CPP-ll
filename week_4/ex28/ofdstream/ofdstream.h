@@ -2,7 +2,7 @@
 #define EX28_OFDSTREAM_H
 
 #include <ostream>
-#include "../../ex27/ofdstreambuf/ofdstreambuf.h"
+#include "../ofdstreambuf/ofdstreambuf.h"
 
 class OFdStream: private OFdStreambuf,  public std::ostream
 {
