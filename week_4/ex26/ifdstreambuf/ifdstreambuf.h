@@ -13,8 +13,10 @@ class IFdStreambuf: public std::streambuf
 {
     protected:
         int d_fd;
-        char d_buffer[100];
         Mode d_mode;
+        size_t const d_bufsize = 100;
+        char *d_buffer;
+        
 
     public:
         explicit IFdStreambuf(Mode mode = KEEP_FD);         // 1

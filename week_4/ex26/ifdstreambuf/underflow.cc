@@ -5,7 +5,7 @@ int IFdStreambuf::underflow()
     if (gptr() < egptr())
         return *gptr();
 
-    int nRead = read(d_fd, d_buffer, 100);
+    int nRead = read(d_fd, d_buffer, d_bufsize);
 
     if (nRead <= 0)
         return EOF;

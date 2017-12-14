@@ -13,9 +13,10 @@ class OFdStreambuf: public std::streambuf
 {
     protected:
         int d_fd;
-        char d_buffer[100];
         Mode d_mode;
-
+        size_t const d_bufsize = 100;
+        char *d_buffer;
+        
     public:
         explicit OFdStreambuf(Mode mode = KEEP_FD);         // 1
         explicit OFdStreambuf(int fd, Mode mode = KEEP_FD); // 2
