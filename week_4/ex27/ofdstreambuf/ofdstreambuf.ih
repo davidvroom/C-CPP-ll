@@ -1,3 +1,4 @@
 #include "ofdstreambuf.h"
+#include <unistd.h>         // read(), close()
 
 using namespace std;

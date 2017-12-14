@@ -16,8 +16,6 @@ class OFdStreambuf: public std::streambuf
         char d_buffer[100];
         Mode d_mode;
 
-        int pSync();
-
     public:
         explicit OFdStreambuf(Mode mode = KEEP_FD);         // 1
         explicit OFdStreambuf(int fd, Mode mode = KEEP_FD); // 2
@@ -27,6 +25,7 @@ class OFdStreambuf: public std::streambuf
 
     private:
         int sync() override;
+        int overflow(int c) override;
 };
 
 #endif
