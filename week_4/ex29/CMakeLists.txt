@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.8)
+project(ex29)
+
+set(CMAKE_CXX_STANDARD 17)
+
+set(SOURCE_FILES main.cc test/test.cc fork/destructor.cc fork/fork.cc
+        fork/fork.h fork/fork.ih fork/waitforchild.cc)
+add_executable(ex29 ${SOURCE_FILES})
