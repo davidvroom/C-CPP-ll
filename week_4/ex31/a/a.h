@@ -8,8 +8,8 @@ using namespace std;
 
 class A: public Base
 {
-private:
-    virtual Base *newCopy() const;
+    private:
+        virtual Base *newCopy() const;
 };
 
 inline Base *A::newCopy() const
