@@ -34,7 +34,7 @@
 
 \newcommand{\desc}[1]{\textit{#1} \vspace{1em}}
 
-\title{\itshape Exercises week 4 - Polymorphism}
+\title{\itshape Exercises week 4: Polymorphism}
 %\subtitle{C/C++ course part II - }
 
 \author{
@@ -119,28 +119,15 @@ We designed \texttt{IFdStream} and \texttt{OFdStream}, which are \texttt{istream
 \clearpage
 
 \section*{Exercise 29}
-\desc{}
-
-\clearpage
-
-\section*{Exercise 30}
-\desc{}
-
-\clearpage
-
-\section*{Exercise 31}
-\desc{Learn to broaden your view about polymorphism}
+\desc{Learn to implement a base class that can be used when applying the Template Method Design Pattern}
 
 We used the following code,
 
-\lstinputlisting[title=\texttt{a/a.h}]{../ex31/a/a.h}
-\lstinputlisting[title=\texttt{base/base.h}]{../ex31/base/base.h}
-\lstinputlisting[title=\texttt{c/c.h}]{../ex31/c/c.h}
-\lstinputlisting[title=\texttt{main.ih}]{../ex31/main.ih}
-\lstinputlisting[title=\texttt{main.cc}]{../ex31/main.cc}
-
-The program gives the desired output; the same as in the exercise stated.
-This non-polymorphic clonings is ill-advised, because ...
+\lstinputlisting[title=\texttt{fork.h}]{../ex29/fork/fork.h}
+\lstinputlisting[title=\texttt{fork.ih}]{../ex29/fork/fork.ih}
+\lstinputlisting[title=\texttt{destructor.cc}]{../ex29/fork/destructor.cc}
+\lstinputlisting[title=\texttt{fork.cc}]{../ex29/fork/fork.cc}
+\lstinputlisting[title=\texttt{waitforchild.cc}]{../ex29/fork/waitforchild.cc}
 
 \clearpage
 
