@@ -2,11 +2,13 @@
 
 void Fork::fork()
 {
-	if (d_pid = ::fork() < 0)
+	if ((d_pid = ::fork()) < 0)
 		throw "fork failed";
-	else if (d_pid == 0 ) 
+	else if (d_pid == 0 )
+	{ 
 		childProcess();
-		exit(1);
+		//exit(1);
+	}
 	else
 		parentProcess();
 

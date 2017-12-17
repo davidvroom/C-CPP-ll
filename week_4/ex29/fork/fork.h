@@ -1,6 +1,7 @@
 #ifndef INCLUDED_FORK_
 #define INCLUDED_FORK_
 
+#include <unistd.h>
 
 class Fork
 {
