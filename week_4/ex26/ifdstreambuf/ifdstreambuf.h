@@ -6,6 +6,11 @@
 class IFdStreambuf: public std::streambuf
 {
     public:
+        enum
+        {
+            BUFSIZE = 100
+        };
+
         enum Mode
         {
             KEEP_FD,
@@ -15,9 +20,7 @@ class IFdStreambuf: public std::streambuf
     protected:
         int d_fd;
         Mode d_mode;
-        size_t const d_bufsize = 100;
-        char *d_buffer;
-        
+        char *d_buffer = nullptr;
 
     public:
         explicit IFdStreambuf(Mode mode = KEEP_FD);         // 1

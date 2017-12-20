@@ -1,6 +1,6 @@
 #include "bistream.ih"
 
-BiStream::BiStream(std::ofstream &one, std::ofstream &two)
+BiStream::BiStream(std::ostream &one, std::ostream &two)
 :
 	BiStreamBuffer(one, two),
 	ostream(this)

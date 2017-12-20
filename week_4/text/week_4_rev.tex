@@ -1,0 +1,130 @@
+\documentclass[12pt]{article}
+\usepackage[left=1in, right=1in]{geometry}
+
+\usepackage{url}
+
+%\usepackage{arydshln}
+
+\usepackage{graphicx}
+
+\usepackage{color}
+\definecolor{light-gray}{gray}{0.30}
+
+\usepackage{listings}
+\lstset{
+	frame=leftline,
+	frameround=ttff,
+	numbers=left,
+	language=C++,
+	showstringspaces=False,
+	extendedchars=False,
+	numberstyle=\footnotesize,
+	basicstyle=\small\ttfamily,
+	commentstyle=\color{light-gray}\slshape,
+	belowskip=1.5em,
+	aboveskip=1.5em,
+	fontadjust,
+	tabsize=4,		%added for proper tab alligning
+	xleftmargin=0cm,
+	xrightmargin=0cm
+}
+
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{
+	\fancyhead[L]{Previous attempt graded by JB.}
+	\renewcommand{\headrulewidth}{0pt}
+}
+
+\newcommand{\desc}[1]{\textit{#1} \vspace{1em}}
+
+\title{\itshape Exercises week 4: Polymorphism - Revision}
+
+\author{
+	Klaas Isaac Bijlsma \\ s2394480
+	\and
+	David Vroom \\ s2309939
+}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Exercise 25}
+\desc{Learn to construct an \texttt{ostream} class}
+
+\textbf{Before we passed the wrong type to the \texttt{BiStream} constructor. Now we passed two \texttt{ostream}-objects to its constructor. Furthermore the data members of \texttt{BiStreamBuffer} were implemented as pointers, this is now changed to reference to \texttt{ostream}-objects. By value isn't possible, because the copy constructor of \texttt{ostream} isn't available.}\\
+
+We constructed the class \texttt{Bistream}, which offers the same facilities as \texttt{ostream}, but inserts its information into two files, whose \texttt{ostream}-objects are passed to this class's constructor. A second class \texttt{BiStreamBuffer} is made and used. We used the following code,
+
+\lstinputlisting[title=\texttt{bistream/bistream.h}]{../ex25/bistream/bistream.h}
+\lstinputlisting[title=\texttt{bistream/bistream.ih}]{../ex25/bistream/bistream.ih}
+\lstinputlisting[title=\texttt{bistream/bistream1.cc}]{../ex25/bistream/bistream1.cc}
+
+\lstinputlisting[title=\texttt{bistreambuffer/bistreambuffer.h}]{../ex25/bistreambuffer/bistreambuffer.h}
+\lstinputlisting[title=\texttt{bistreambuffer/bistreambuffer.ih}]{../ex25/bistreambuffer/bistreambuffer.ih}
+\lstinputlisting[title=\texttt{bistreambuffer/bistreambuffer1.cc}]{../ex25/bistreambuffer/bistreambuffer1.cc}
+\lstinputlisting[title=\texttt{bistreambuffer/overflow.cc}]{../ex25/bistreambuffer/overflow.cc}
+\clearpage
+
+\section*{Exercise 26}
+\desc{Learn to design a streambuf reading from file descriptors}
+
+\textbf{We solved the magic number 100 and prevented DRY in the constructor. Also we improved the member function \texttt{open()}.}\\
+
+We designed the class \texttt{IFdStreambuf}, whose objects may be used as a \texttt{streambuf} of \texttt{istream} objects to allow extractions from an already open file descriptor. We used the following code,
+
+\lstinputlisting[title=\texttt{ifdstreambuf.h}]{../ex26/ifdstreambuf/ifdstreambuf.h}
+\lstinputlisting[title=\texttt{ifdstreambuf.ih}]{../ex26/ifdstreambuf/ifdstreambuf.ih}
+\lstinputlisting[title=\texttt{close.cc}]{../ex26/ifdstreambuf/close.cc}
+\lstinputlisting[title=\texttt{destructor.cc}]{../ex26/ifdstreambuf/destructor.cc}
+\lstinputlisting[title=\texttt{ifdstreambuf1.cc}]{../ex26/ifdstreambuf/ifdstreambuf1.cc}
+\lstinputlisting[title=\texttt{ifdstreambuf2.cc}]{../ex26/ifdstreambuf/ifdstreambuf2.cc}
+\lstinputlisting[title=\texttt{open.cc}]{../ex26/ifdstreambuf/open.cc}
+\lstinputlisting[title=\texttt{underflow.cc}]{../ex26/ifdstreambuf/underflow.cc}
+\lstinputlisting[title=\texttt{xsgetn.cc}]{../ex26/ifdstreambuf/xsgetn.cc}
+
+\clearpage
+
+\section*{Exercise 27}
+\desc{Learn to design a streambuf writing to file descriptors}
+
+\textbf{We solved the magic number 100 and prevented DRY in the constructor. Also we improved the member function \texttt{open()}.}\\
+
+We designed the class \texttt{OFdStreambuf}, whose objects may be used as a \texttt{streambuf} of \texttt{ostream} objects to allow insertions into an file descriptor. We used the following code,
+
+\lstinputlisting[title=\texttt{ofdstreambuf.h}]{../ex27/ofdstreambuf/ofdstreambuf.h}
+\lstinputlisting[title=\texttt{ofdstreambuf.ih}]{../ex27/ofdstreambuf/ofdstreambuf.ih}
+\lstinputlisting[title=\texttt{close.cc}]{../ex27/ofdstreambuf/close.cc}
+\lstinputlisting[title=\texttt{destructor.cc}]{../ex27/ofdstreambuf/destructor.cc}
+\lstinputlisting[title=\texttt{ofdstreambuf1.cc}]{../ex27/ofdstreambuf/ofdstreambuf1.cc}
+\lstinputlisting[title=\texttt{ofdstreambuf2.cc}]{../ex27/ofdstreambuf/ofdstreambuf2.cc}
+\lstinputlisting[title=\texttt{open.cc}]{../ex27/ofdstreambuf/open.cc}
+\lstinputlisting[title=\texttt{overflow.cc}]{../ex27/ofdstreambuf/overflow.cc}
+\lstinputlisting[title=\texttt{sync.cc}]{../ex27/ofdstreambuf/sync.cc}
+
+
+\clearpage
+
+\section*{Exercise 28}
+\desc{Learn to design streams}
+
+\textbf{We have changed the while loop in the main into an eternal loop with a break if \texttt{EOF} is reached. Our solution is based on the solution of exercise 13 of part I.}\\
+
+We designed \texttt{IFdStream} and \texttt{OFdStream}, which are \texttt{istream} and \texttt{ostream} objects, respectively, reading from and writing to streams. We also made a main function that copies information entered at the keyboard to the screen. We used the following code,
+
+\lstinputlisting[title=\texttt{ifdstream/ifdstream.h}]{../ex28/ifdstream/ifdstream.h}
+\lstinputlisting[title=\texttt{ifdstream/ifdstream.ih}]{../ex28/ifdstream/ifdstream.ih}
+\lstinputlisting[title=\texttt{ifdstream/ifdstream.cc}]{../ex28/ifdstream/ifdstream.cc}
+
+\lstinputlisting[title=\texttt{ofdstream/ofdstream.h}]{../ex28/ofdstream/ofdstream.h}
+\lstinputlisting[title=\texttt{ofdstream/ofdstream.ih}]{../ex28/ofdstream/ofdstream.ih}
+\lstinputlisting[title=\texttt{ofdstream/ofdstream.cc}]{../ex28/ofdstream/ofdstream.cc}
+
+\lstinputlisting[title=\texttt{main.cc}]{../ex28/main.cc}
+
+
+\clearpage
+
+
+\end{document}
