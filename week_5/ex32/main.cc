@@ -4,15 +4,23 @@
 
 class CSVLines: private std::vector<std::vector<std::string>>
 {
+    friend void process(std::vector<std::string> &strVect);
     typedef std::vector<std::string> StrVector;
 
     public:
         CSVLines();
 
-        void read();
+        void read() const;
+
+        //vector::iterator begin() override;
+
         
-        using std::vector<StrVector>::begin;
-        using std::vector<StrVector>::end;
+        //using std::vector<StrVector>::begin;
+        using std::vector<StrVector>::cbegin;
+
+        //using std::vector<StrVector>::end;
+        using std::vector<StrVector>::cend;
+
 };
 
 inline CSVLines::CSVLines()  
@@ -20,15 +28,15 @@ inline CSVLines::CSVLines()
     assign(2, std::vector<std::string>(2, "hello "));
 }
 
-inline void CSVLines::read()
+inline void CSVLines::read() const
 {
     std::cout << "read\n";
 }
 
-void process(std::vector<std::string> &strVect)
+void process(std::vector<std::string> const &strVect)
 {
     //std::cout << "test\n";
-    strVect[0] = std::string("hi");
+    //strVect[0] = std::string("hi");
     //std::cout << std::dec << &strVect[0] << '\n';
     //std::cout << std::dec << &strVect[1] << '\n';
     std::cout << *strVect.begin() << '\n';
@@ -37,9 +45,9 @@ void process(std::vector<std::string> &strVect)
 
 int main()
 {
-    CSVLines csvLines;
-    //std::cout << *csvLines.begin() << '\n';
-    //process(csvLines.);
+    CSVLines const csvLines;
+    //*csvLines.begin()->begin() = "changed";
+
     csvLines.read();
     for (auto &next: csvLines)
         process(next);
