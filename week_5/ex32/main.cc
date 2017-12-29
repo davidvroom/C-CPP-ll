@@ -4,7 +4,6 @@
 
 class CSVLines: private std::vector<std::vector<std::string>>
 {
-    friend void process(std::vector<std::string> &strVect);
     typedef std::vector<std::string> StrVector;
 
     public:
@@ -12,41 +11,44 @@ class CSVLines: private std::vector<std::vector<std::string>>
 
         void read() const;
 
-        //vector::iterator begin() override;
+        using std::vector<StrVector>::const_iterator;
 
-        
-        //using std::vector<StrVector>::begin;
-        using std::vector<StrVector>::cbegin;
-
-        //using std::vector<StrVector>::end;
-        using std::vector<StrVector>::cend;
-
+        const_iterator begin() const;
+        const_iterator end() const;
 };
+
+inline CSVLines::const_iterator CSVLines::begin() const
+{
+    return std::vector<StrVector>::cbegin();
+}
+
+inline CSVLines::const_iterator CSVLines::end() const
+{
+    return std::vector<StrVector>::cend();
+}
 
 inline CSVLines::CSVLines()  
 {
-    assign(2, std::vector<std::string>(2, "hello "));
+    std::cout << "Constructor CSVLines called\n";
+    assign(2, std::vector<std::string>{ "one", "two" });
 }
 
 inline void CSVLines::read() const
 {
-    std::cout << "read\n";
+    std::cout << "read() called\n";
 }
 
 void process(std::vector<std::string> const &strVect)
 {
-    //std::cout << "test\n";
-    //strVect[0] = std::string("hi");
-    //std::cout << std::dec << &strVect[0] << '\n';
-    //std::cout << std::dec << &strVect[1] << '\n';
-    std::cout << *strVect.begin() << '\n';
+    std::cout << *strVect.begin()
+              << '\n'
+              << *(strVect.end()-1)
+              << '\n';
 }
-// uses strVect's begin and end members.
 
 int main()
 {
-    CSVLines const csvLines;
-    //*csvLines.begin()->begin() = "changed";
+    CSVLines csvLines;
 
     csvLines.read();
     for (auto &next: csvLines)
