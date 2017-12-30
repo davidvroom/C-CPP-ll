@@ -17,4 +17,5 @@ Derived::Derived(initializer_list<string> iniList)
 int main()
 {
     Derived derived{ "Klaas", "David", "Jurjen", "Frank" };
+    cout << "hoi\n";
 }
