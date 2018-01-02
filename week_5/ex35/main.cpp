@@ -1,5 +1,6 @@
 #include <iostream>
 #include <set>
+#include <vector>
 
 using namespace std;
 
@@ -19,4 +20,13 @@ int main()
     for (auto &next: object)
         cout << next << ' ';
     cout << '\n';
+
+    for (auto it = object.begin(), prev = object.end(); it != object.end(); prev = it, ++it)
+        if (*it != *prev)
+            cout << *it << ' ' << object.count(*it) << '\n';
+
+    vector<string> vecObj;
+    for (auto it = object.begin(), prev = object.end(); it != object.end(); prev = it, ++it)
+        if (*it != *prev)
+            vecObj.push_back(*it);
 }
