@@ -1,0 +1,2 @@
+
+Now essentially the same is done, but by using a class VectorData that has a vector<string> data member. The output (from input "2 1 done") shows that again excess capacity is shedded. 

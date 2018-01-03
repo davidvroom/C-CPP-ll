@@ -1,0 +1,3 @@
+Purpose of this exercise: learn the implications of types of inheritance. 
+
+The given code has a design flaw in the class CSVLines. It inherits privately from std::vector<std::vector<std::string>> and it uses its begin and end functions. These however, return a (non const !) iterator. This is not what you want, because then the data can be modified. We solved it by making sure that const_iterators are returned. 

@@ -1,0 +1,3 @@
+Purpose: learn to select the right container for the task at hand. 
+
+Now, a program is constructed that prints a sorted list of all different words appearing at its standard input, together with the number of times is was entered as input.

@@ -1,0 +1,3 @@
+Purpose: learn to use containers to solve complex tasks.
+
+A program is constructed that prints a sorted list of all different words appearing at its standard input.

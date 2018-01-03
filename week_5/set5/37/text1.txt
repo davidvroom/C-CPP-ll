@@ -1,0 +1,3 @@
+Purpose: learn to shed excess capacity from a vector. 
+
+The output of the program of exercise 35 is now stored in a vector. Then one additional word is added to the vector. If needed, its excess capacity is shedded. Below is our code and the output it generates when initally two (different) input words are given. It can be seen that the capacity is nicely reduced from 4 to 3. 

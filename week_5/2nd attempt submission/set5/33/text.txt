@@ -1,0 +1,7 @@
+Purpose of this exercise: learn to define an constructor accepting an initializer_list. 
+
+A constructor that accepts an initializer_list is added to the class Derived. 
+
+The following command is used to compile the code:
+g++ -Wall -Werror -std=c++17 -o main main.cc
+The compiler gave no output. 

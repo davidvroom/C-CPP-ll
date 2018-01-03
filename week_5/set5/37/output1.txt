@@ -1,0 +1,7 @@
+Enter a sequence of words (enter "done" when done):
+1. Size: 2
+1. Capacity: 2
+2. Size: 3
+2. Capacity: 4
+3. Size: 3
+3. Capacity: 3
