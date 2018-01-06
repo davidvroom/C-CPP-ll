@@ -7,13 +7,11 @@
 using namespace std;
 
 class Derived: public string
-{
-    friend istream &operator>>(istream &istr, Derived &str);
-};
+{};
 
 istream &operator>>(istream &istr, Derived &str)
 {
-    return std::getline(istr, str);
+    return getline(istr, str);
 }
 
 int main()
@@ -22,8 +20,4 @@ int main()
 
     copy(istream_iterator<Derived>(cin), istream_iterator<Derived>(),
          back_inserter(vs));
-
-    for (auto &el: vs)
-        cout << el << ' ';
-    cout << '\n';
 }
