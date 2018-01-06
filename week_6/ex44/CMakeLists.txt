@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
-project(ex43)
+project(ex44)
 
 set(CMAKE_CXX_STANDARD 17)
 
 set(SOURCE_FILES main.cc)
-add_executable(ex43 ${SOURCE_FILES})
+add_executable(ex44 ${SOURCE_FILES})
