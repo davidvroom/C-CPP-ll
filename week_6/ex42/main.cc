@@ -8,12 +8,12 @@ using namespace std;
 
 class Derived: public string
 {
-    friend istream &operator>>(istream &istr, Derived &str);
+    //friend istream &operator>>(istream &istr, Derived &str);
 };
 
 istream &operator>>(istream &istr, Derived &str)
 {
-    return std::getline(istr, str);
+    return getline(istr, str);
 }
 
 int main()
@@ -26,4 +26,5 @@ int main()
     for (auto &el: vs)
         cout << el << ' ';
     cout << '\n';
+
 }
