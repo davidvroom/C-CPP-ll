@@ -1,0 +1,3 @@
+Purpose of this exercise: learn to fine-tune the unordered_multimap::count member. 
+
+We made a function that determines the number of unique keys in an unordered_multimap, by giving the keys a weight-factor inversely proportional to the number of times they occur. 
