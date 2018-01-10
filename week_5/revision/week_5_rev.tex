@@ -1,0 +1,91 @@
+\documentclass[12pt]{article}
+\usepackage[left=1in, right=1in]{geometry}
+
+\usepackage{url}
+
+%\usepackage{arydshln}
+
+\usepackage{graphicx}
+
+\usepackage{color}
+\definecolor{light-gray}{gray}{0.30}
+
+\usepackage{verbatim}
+
+\usepackage{listings}
+\lstset{
+	frame=leftline,
+	frameround=ttff,
+	numbers=left,
+	language=C++,
+	showstringspaces=False,
+	extendedchars=False,
+	numberstyle=\footnotesize,
+	basicstyle=\small\ttfamily,
+	commentstyle=\color{light-gray}\slshape,
+	belowskip=1.5em,
+	aboveskip=1.5em,
+	fontadjust,
+	tabsize=4,		%added for proper tab alligning
+	xleftmargin=0cm,
+	xrightmargin=0cm
+}
+
+
+\newcommand{\desc}[1]{\textit{#1} \vspace{1em}}
+
+\title{\itshape Exercises week 5: Containers - Revision}
+%\subtitle{C/C++ course part II - }
+
+\author{
+	Klaas Isaac Bijlsma \\ s2394480
+	\and
+	David Vroom \\ s2309939
+}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Exercise 36}
+\desc{Learn to select the right container for the task at hand}
+
+In the previous attempt, we used a multiset. Now we have used a map to construct a program that prints a sorted list of all different words appearing at its standard input, together with the number of times is was entered as input.
+
+\lstinputlisting[title=\texttt{main.cc}]{36/main.cc}
+
+\clearpage
+
+\section*{Exercise 37}
+\desc{Learn to shed excess capacity from a vector}
+
+In the previous attempt, we added the elements of the set to the vector one by one. This is improved now by initializing the vector using iterators. 
+
+The output of the program of exercise 35 is now stored in a vector. Then one additional word is added to the vector. If needed, its excess capacity is shedded. Below is our code and the output it generates when initally two (different) input words are given. It can be seen that the capacity is nicely reduced from 4 to 3. 
+
+\lstinputlisting[title=\texttt{main1.cc}]{37/main1.cc}
+\lstinputlisting[title=\texttt{Output of main1.cc},language=bash, numbers=none]{37/output1.txt}
+
+Now essentially the same is done, but by using a class VectorData that has a \texttt{vector<string>} data member. The output (from input "2 1 done") shows that again excess capacity is shedded. 
+
+\lstinputlisting[title=\texttt{vectordata/vectordata.h}]{37/vectordata/vectordata.h}
+\lstinputlisting[title=\texttt{main.cc}]{37/main.cc}
+\lstinputlisting[title=\texttt{Output of main.cc},language=bash, numbers=none]{37/output.txt}
+
+
+
+\clearpage
+
+\section*{Exercise 38}
+\desc{Learn to fine-tune the unordered\_multimap::count member}
+
+In the previous attempt, we made a function that computes in a bit complex way the number of unique keys. No we used a simpler way to determine this number. 
+
+\lstinputlisting[title=\texttt{main.cc}]{38/main.cc}
+
+
+
+\clearpage
+
+\end{document}

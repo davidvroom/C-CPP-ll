@@ -16,8 +16,8 @@ int main()
             break;
 
         if (object.count(word)) 
-            object[word] += 1;  // word already entered, so increment count
-        else                    // new word, insert and set count to 1
+            object[word] += 1;  // if word already entered, increment value
+        else                    // new word, insert and set value to 1
             object.insert(pair<string, size_t>{ word, 1 });
     }
 

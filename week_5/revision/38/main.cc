@@ -14,8 +14,8 @@ int main(int argc, char **argv)
                       { "France", "Nice" },
                       { "France", "Paris" }});
 
-    // size_t nUniqueKeys = ...
-
+    size_t nUniqueKeys = unordered_map<string, string>
+                        (object.begin(), object.end()).size();
     cout << "There are " << nUniqueKeys
          << " unique keys in the container\n";
 }
