@@ -1,0 +1,9 @@
+#include <iostream>
+#include <fstream>
+#include "vstring/vstring.h"
+
+using namespace std;
+
+void display(Vstring::Charmap &cmap);
+bool vowels(char c, Vstring::Charmap &cmap);
+
