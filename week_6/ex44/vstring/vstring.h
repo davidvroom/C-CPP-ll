@@ -8,15 +8,16 @@
 
 class Vstring: public std::vector<std::string>
 {
-public:
-    typedef std::map<char, size_t> Charmap;
+    public:
+        typedef std::map<char, size_t> Charmap;
 
-    explicit Vstring(std::istream &in);
+        explicit Vstring(std::istream &in);
 
-    size_t count(Charmap &cmap, bool (*accept)(char, Charmap &));
+        size_t count(Charmap &cmap, bool (*accept)(char, Charmap &));
 
-private:
-    static size_t countChar(std::string const &str, Charmap &cmap, bool (*accept)(char, Charmap &));
+    private:
+        static size_t countChar(std::string const &str, Charmap &cmap,
+                                bool (*accept)(char, Charmap &));
 };
 
 #endif

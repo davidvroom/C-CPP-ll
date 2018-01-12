@@ -1,6 +1,7 @@
 #include "vstring.ih"
 
-size_t Vstring::countChar(string const &str, Charmap &cmap, bool (*accept)(char, Charmap &))
+size_t Vstring::countChar(string const &str, Charmap &cmap,
+                          bool (*accept)(char, Charmap &))
 {
     return count_if(
         str.begin(), str.end(),
