@@ -34,7 +34,7 @@
 
 \newcommand{\desc}[1]{\textit{#1} \vspace{1em}}
 
-\title{\itshape Exercises week 6}
+\title{\itshape Exercises week 6 - STL and Generic Algorithms}
 %\subtitle{C/C++ course part II - }
 
 \author{
@@ -51,12 +51,15 @@
 \section*{Exercise 42}
 \desc{Learn to extract lines using generic algorithms into a container holding \texttt{string} objects, although \texttt{operator>>()} extracts strings}
 
+If we overloaded the extraction operator for a \texttt{std::string}, we would extract individual words. This is because as soon as a whitespace character is encountered, the 'word' is stored in a \texttt{std::string}. Therefore we made a class \texttt{Derived}, which inherits from \texttt{std::string}, and overloaded the extraction operator for this class. We used the following code:
 \lstinputlisting[title=\texttt{main.cc}]{../ex42/main.cc}
 
 \clearpage
 
 \section*{Exercise 43}
 \desc{Learn to use promotion with generic algorithms and predefined function objects when manipulating basic data types.}
+
+By only using features from the STL, we made a program that sorts the command line's arguments twice, once ascending, once descending without storing them in a \texttt{vector}. We used the following code:
 
 \lstinputlisting[title=\texttt{main.cc}]{../ex43/main.cc}
 
@@ -65,14 +68,19 @@
 \section*{Exercise 44}
 \desc{Learn to recognize a situation where lambda functions may be used}
 
+The output of our program produced from the given txt file is given below the code.
+
+
 \lstinputlisting[title=\texttt{vstring/vstring.h}]{../ex44/vstring/vstring.h}
 \lstinputlisting[title=\texttt{vstring/vstring.ih}]{../ex44/vstring/vstring.ih}
 \lstinputlisting[title=\texttt{vstring/count.cc}]{../ex44/vstring/count.cc}
 \lstinputlisting[title=\texttt{vstring/countchar.cc}]{../ex44/vstring/countchar.cc}
-\lstinputlisting[title=\texttt{main.cc}]{../ex44/main.cc}
 \lstinputlisting[title=\texttt{main.ih}]{../ex44/main.ih}
 \lstinputlisting[title=\texttt{display.cc}]{../ex44/display.cc}
 \lstinputlisting[title=\texttt{vowels.cc}]{../ex44/vowels.cc}
+\lstinputlisting[title=\texttt{main.cc}]{../ex44/main.cc}
+
+\lstinputlisting[title=\texttt{Output},language=bash, numbers=none]{../ex44/output.txt}
 
 
 \clearpage
@@ -80,23 +88,22 @@
 \section*{Exercise 45}
 \desc{Learn to use generic algorithms to remove elements from a vector}
 
+We used the following code:
+\lstinputlisting[title=\texttt{main.cc}]{../ex45/main.cc}
+
 \clearpage
 
 \section*{Exercise 46}
 \desc{Learn to distinguish two frequently used generic algorithms}
 
+In general, the generic algorithm \texttt{copy} is used to copy a range to a destination, and the \texttt{for\_each} generic algorithm passes each element from a range to a funtion or function object. So, with \texttt{copy} you can move all elements of an existing range with respect to each other. This is not possible with \texttt{for\_each}. This is shown in the following code:
+\lstinputlisting[title=\texttt{copy.cc}]{../ex46/copy.cc}.
+
+On the other hand, \texttt{copy} can not manipualte the individual elements of the range, something which \texttt{for\_each} can, as illustrated in the following code:
+\lstinputlisting[title=\texttt{foreach.cc}]{../ex46/foreach.cc}.
 
 
 \clearpage
 
-\section*{Exercise 47}
-\desc{}
-
-\clearpage
-
-\section*{Exercise 48}
-\desc{}
-
-\clearpage
 
 \end{document}
