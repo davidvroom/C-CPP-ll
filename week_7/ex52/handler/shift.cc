@@ -1,17 +1,15 @@
 #include "handler.ih"
 
-void shift()
+void Handler::shift(ostream &out, string const &text)
 {
-	string str("text");
-	cout << str << '\n';
+	string str(text);
+	out << str << '\n';
+
 	for (size_t idx = 1; idx != str.size(); ++idx)
 	{
 		char first = str[0];
-		//str.replace(str.begin(), str.end() - 1, 
-		//	 		 str.begin() + 1, str.end());
 		str.erase(0,1);
 		str.push_back(first);
-		cout << str << '\n';
-
+		out << str << '\n';
 	}
 }

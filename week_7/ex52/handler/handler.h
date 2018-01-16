@@ -7,7 +7,7 @@
 class Handler
 {
 	public:
-		void shift();
+		void shift(std::ostream &out, std::string const &text);
 };
 
 #endif

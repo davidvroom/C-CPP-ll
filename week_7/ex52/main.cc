@@ -1,7 +1,13 @@
+#include <iostream>
+#include <fstream>
 #include "handler/handler.h"
+
+using namespace std;
 
 int main()
 {
-	Handler frank;
-	frank.shift();
+	Handler object;
+	string txt = "mouse";
+	ofstream out("output.txt");
+	object.shift(out, txt);
 }
