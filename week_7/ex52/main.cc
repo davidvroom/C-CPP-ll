@@ -1,10 +1,7 @@
-#include <iostream>
-
-using namespace std;
-
-
+#include "handler/handler.h"
 
 int main()
 {
-	
+	Handler frank;
+	frank.shift();
 }
