@@ -13,21 +13,20 @@ int main(int argc, char **argv)
 
     					// convert it to a std::time_t:
     time_t time = system_clock::to_time_t(timePoint);
-    			
-    					// get a std::tm value:
-    tm tmValue{ *localtime(&time) };
 
     					// display the time:
-    cout << put_time(&tmValue, "current time: %c") << '\n';
+    cout << left << setw(14) << "Current time:" 
+         << put_time(localtime(&time), "%c") << '\n';
     
     					// display the gmtime
-    cout << put_time(gmtime(&time), "gmtime: %c") << '\n';
+    cout << left << setw(14) << "Gmtime:" 
+         << put_time(gmtime(&time), "%c") << '\n';
 
     string arg = argv[1];
     char suffix = arg.back();
     int count = stoi(arg);
 
-    					// add specified time to now
+    					// add or subtract specified time to now
     if (suffix == 's')
     	timePoint += seconds(count);
     else if (suffix == 'm')
@@ -38,9 +37,7 @@ int main(int argc, char **argv)
 						// convert it to a std::time_t:
     time_t newTime = system_clock::to_time_t(timePoint);
 
-    					// get a std::tm value:
-    tm newTmValue{ *localtime(&newTime) };
-
         				// display the time:
-    cout << put_time(&newTmValue, "new time: %c") << '\n';
+    cout << left << setw(14) << "New time:" 
+         << put_time(localtime(&newTime), "%c") << '\n';
 }
