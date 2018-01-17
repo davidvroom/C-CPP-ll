@@ -1,13 +1,17 @@
-#include <iostream>
-#include <fstream>
-#include "handler/handler.h"
+#include "main.ih"
 
-using namespace std;
-
-int main()
+int main(int argc, char **argv)
 {
+	ofstream out(argv[1]);
+	cout << "Give text: \n";
+	string txt;
+	getline(cin, txt);
+
+	mutex shiftMutex;
+
 	Handler object;
-	string txt = "mouse";
-	ofstream out("output.txt");
-	object.shift(out, txt);
+	thread th(callShift, ref(object), ref(out), ref(txt), ref(shiftMutex));
+
+	object.shift(out, txt, shiftMutex);
+	th.join();
 }

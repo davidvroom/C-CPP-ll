@@ -1,5 +1,8 @@
-mouse
-ousem
-usemo
-semou
-emous
+abcd
+bcda
+cdab
+dabc
+abcd
+bcda
+cdab
+dabc
