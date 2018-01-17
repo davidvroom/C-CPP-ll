@@ -1,0 +1,10 @@
+#include <iostream>
+#include <fstream>
+#include <thread>
+#include <mutex>
+#include "handler/handler.h"
+
+using namespace std;
+
+void callShift(Handler const &handlerObj, ostream &out, 
+	           string const &text, mutex &mut);

@@ -1,7 +1,9 @@
 #include "handler.ih"
 
-void Handler::shift(ostream &out, string const &text)
+void Handler::shift(ostream &out, string const &text, mutex &mut) const
 {
+	lock_guard<mutex> lg(mut);
+
 	string str(text);
 	out << str << '\n';
 
