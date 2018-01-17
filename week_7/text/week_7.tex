@@ -1,0 +1,94 @@
+\documentclass[12pt]{article}
+\usepackage[left=1in, right=1in]{geometry}
+
+\usepackage{url}
+
+%\usepackage{arydshln}
+
+\usepackage{graphicx}
+
+\usepackage{color}
+\definecolor{light-gray}{gray}{0.30}
+
+\usepackage{verbatim}
+
+\usepackage{listings}
+\lstset{
+	frame=leftline,
+	frameround=ttff,
+	numbers=left,
+	language=C++,
+	showstringspaces=False,
+	extendedchars=False,
+	numberstyle=\footnotesize,
+	basicstyle=\small\ttfamily,
+	commentstyle=\color{light-gray}\slshape,
+	belowskip=1.5em,
+	aboveskip=1.5em,
+	fontadjust,
+	tabsize=4,		%added for proper tab alligning
+	xleftmargin=0cm,
+	xrightmargin=0cm
+}
+
+
+\newcommand{\desc}[1]{\textit{#1} \vspace{1em}}
+
+\title{\itshape Exercises week 7 - Multi-threading I}
+
+\author{
+	Klaas Isaac Bijlsma \\ s2394480
+	\and
+	David Vroom \\ s2309939
+}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Exercise 49}
+\desc{Learn to apply basic multi-threading}
+
+We used the following code.
+\lstinputlisting[title=\texttt{main.ih}]{../ex49/main.ih}
+\lstinputlisting[title=\texttt{waiting.cc}]{../ex49/waiting.cc}
+\lstinputlisting[title=\texttt{main.cc}]{../ex49/main.cc}
+
+\clearpage
+
+\section*{Exercise 50}
+\desc{Learn to perform time conversions}
+
+We used the following code.
+\lstinputlisting[title=\texttt{main.cc}]{../ex50/main.cc}
+
+\clearpage
+
+\section*{Exercise 51}
+\desc{Learn to use the chrono/clock facilities}
+
+We used the following code.
+\lstinputlisting[title=\texttt{main.cc}]{../ex51/main.cc}
+
+\clearpage
+
+\section*{Exercise 52}
+\desc{Learn to define a thread with objects that aren't functors}
+
+We used the following code.
+
+\lstinputlisting[title=\texttt{handler/handler.ih}]{../ex52/handler/handler.ih}    
+\lstinputlisting[title=\texttt{handler/handler.h}]{../ex52/handler/handler.h}    
+\lstinputlisting[title=\texttt{handler/shift.cc}]{../ex52/handler/shift.cc}      
+\lstinputlisting[title=\texttt{main.cc}]{../ex52/main.cc}
+
+\clearpage
+
+\section*{Exercise 53}
+\desc{Learn to design a simple producer/consumer program}
+
+
+\clearpage
+
+\end{document}
