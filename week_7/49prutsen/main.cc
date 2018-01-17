@@ -15,10 +15,10 @@ int main(int argc, char **argv)
 	thread primes(eratosthenes, ref(vs), nPrimes);
 
 	cout << primes.joinable() << '\n';
-	this_thread::sleep_for(chrono::seconds(3));
+	this_thread::sleep_for(chrono::seconds(10));
 	cout << primes.joinable() << '\n';
-	primes.join();
-		cout << primes.joinable() << '\n';
+	//primes.join();
+	cout << primes.joinable() << '\n';
 
 
 	/*

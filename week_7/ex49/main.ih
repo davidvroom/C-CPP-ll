@@ -1,0 +1,12 @@
+#include <string>
+#include <thread>
+#include <chrono>
+#include <vector>
+#include <algorithm>
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+using namespace chrono;
+
+void waiting(bool &ready);
