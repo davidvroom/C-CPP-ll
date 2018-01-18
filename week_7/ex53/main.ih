@@ -1,0 +1,11 @@
+#include <iostream>
+#include <thread>
+#include <string>
+#include <fstream>
+#include "storage/storage.h"
+#include <chrono>
+
+using namespace std;
+using namespace chrono;
+
+void processQ(Storage &storage, string const &fileName);
