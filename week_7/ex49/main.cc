@@ -12,14 +12,15 @@ int main(int argc, char **argv)
 	size_t next = 3;
 
 	while (vec.size() != nPrimes) 
-	{				
+	{	
+		// Eratosthenes sieve		
 		auto iter = 
 			find_if(vec.begin(), vec.end(),
 				[=](size_t prime)
 				{
 					return next % prime == 0; 
 				}
-			); // Eratosthenes sieve
+			); 
 		if (iter == vec.end()) 
 			vec.push_back(next); // next is prime number
 		++next;

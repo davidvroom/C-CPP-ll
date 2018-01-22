@@ -90,8 +90,8 @@ We used the following code.
 \section*{Exercise 53}
 \desc{Learn to design a simple producer/consumer program}
 
-The thread that reads lines from cin and pushes them into the queue is the main function itself. A separate thread uses polling to find out if something is available in the queue. If so, it prints this to a file and removes the line from the queue. However, if it finds an empty queue (via the member function \texttt{empty}), it may be because all lines from cin are read, or the main thread hasn't finished inserting a new line yet. Because of the latter case, the separate thread should not end when it finds an empty queue, but it should just try again some time later. In the former case, it should be informed that it can end. This is accomplished by main setting a datamember \texttt{d\_finished}, and let the other thread check for its state.   
-So if all lines have been read from cin and pushed, main should not just end, because the other thread isn't finished.  
+The thread that reads lines from \texttt{cin} and pushes them into the queue is the main function itself. A separate thread uses polling to find out if something is available in the queue. If so, it prints this to a file and removes the line from the queue. However, if it finds an empty queue (via the member function \texttt{empty}), it may be because all lines from cin are read, or the main thread hasn't finished inserting a new line yet. Because of the latter case, the separate thread should not end when it finds an empty queue, but it should just try again some time later. In the former case, it should be informed that it can end. This is accomplished by main setting a datamember \texttt{d\_finished}, and let the other thread check for its state.   
+So if all lines have been read from cin and pushed, main should not just end, because the other thread isn't finished.\\  
 We used the following code.
 \lstinputlisting[title=\texttt{storage/storage.ih}]{../ex53/storage/storage.ih}    
 \lstinputlisting[title=\texttt{storage/storage.h}]{../ex53/storage/storage.h}    
