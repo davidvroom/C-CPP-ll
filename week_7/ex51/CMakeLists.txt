@@ -3,5 +3,5 @@ project(ex43)
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(SOURCE_FILES main.cc)
+set(SOURCE_FILES main.cc main.ih printtime.cc)
 add_executable(ex43 ${SOURCE_FILES})

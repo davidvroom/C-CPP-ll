@@ -1,0 +1,15 @@
+#include <iostream>
+#include <chrono>
+#include <iomanip>
+#include <string>
+
+using namespace std;
+using namespace chrono;
+
+enum TimeMode
+{
+	GMTIME,
+	LOCALTIME
+};
+
+void printTime(time_point<system_clock> &timePoint, TimeMode mode = LOCALTIME);
