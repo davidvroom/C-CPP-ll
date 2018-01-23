@@ -11,5 +11,5 @@ void printTime(time_point<system_clock> const &timePoint, TimeMode mode)
     	return;
     }
 
-    cout << put_time(localtime(&time), "Current time: %c\n");
+    cout << put_time(localtime(&time), "Local time: %c\n");
 }

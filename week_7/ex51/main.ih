@@ -12,4 +12,4 @@ enum TimeMode
 	LOCALTIME
 };
 
-void printTime(time_point<system_clock> &timePoint, TimeMode mode = LOCALTIME);
+void printTime(time_point<system_clock> const &timePoint, TimeMode mode = LOCALTIME);
