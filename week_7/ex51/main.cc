@@ -2,7 +2,6 @@
 
 int main(int argc, char **argv)
 {
-    					// get the current time
     time_point<system_clock> timePoint{system_clock::now()};
 
     printTime(timePoint);
@@ -11,7 +10,6 @@ int main(int argc, char **argv)
 
     string arg = argv[1];
     int count = stoi(arg);
-
     					// add or subtract specified time to now
     switch (char suffix = arg.back())
     {

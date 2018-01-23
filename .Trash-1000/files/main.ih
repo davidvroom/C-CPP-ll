@@ -6,5 +6,5 @@
 
 using namespace std;
 
-void callShift(Handler const &handlerObj, ostream &out, 
-	           string const &text, mutex &mut);
+//void callShift(Handler const &handlerObj, ostream &out, 
+//	           string const &text, mutex &mut);

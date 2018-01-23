@@ -1,4 +1,10 @@
-#include "main.ih"
+#include <iostream>
+#include <fstream>
+#include <thread>
+#include <mutex>
+#include "handler/handler.h"
+
+using namespace std;
 
 int main(int argc, char **argv)
 {
@@ -10,9 +16,20 @@ int main(int argc, char **argv)
 
 	mutex shiftMutex;
 	Handler object;
-	
-	thread th(callShift, ref(object), ref(out), ref(txt), ref(shiftMutex));
+	thread th(
+		[&]
+		{
+			object.shift(out, txt, shiftMutex);
+		}
+	);
 
-	object.shift(out, txt, shiftMutex);
+	thread th2(
+		[&]
+		{
+			Handler{}.shift(out, txt, shiftMutex);
+		}
+	);
+
 	th.join();
+	th2.join();
 }
