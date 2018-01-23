@@ -9,7 +9,7 @@ class Handler
 {
 	public:
 		void shift(std::ostream &out, std::string const &text, 
-				   std::mutex &mut) const;
+				   std::mutex &mut);
 };
 
 #endif

@@ -27,6 +27,7 @@ int main(int argc, char **argv)
 
         default: 
             cout << "Invalid suffix\n";
+        return 1;
     }
 
     cout << "Below the modified time.\n";
