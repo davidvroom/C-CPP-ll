@@ -29,7 +29,7 @@ int main()
     size_t iaSize = 17; 
 
     quickSort(ia, ia + iaSize);
-    
+
     for (int el: ia)
         cout << el << '\n';
 }

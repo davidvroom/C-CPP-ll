@@ -110,7 +110,7 @@ int main()
 			{
 				cout << setw(5) << fut[row][col].get();
 			}
-			catch (exception &msg)
+			catch (exception const &msg)
 			{
 				cout << "Exception: " << msg.what() << '\n'; 
 			}
