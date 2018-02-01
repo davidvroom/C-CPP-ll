@@ -4,7 +4,7 @@
 #include <iomanip>
 #include <mutex>
 #include <queue>
-#include "semaphore/semaphore.h"
+#include "semaphore/semaphore.h"	// from ex57
 
 using namespace std;
 
@@ -28,14 +28,12 @@ struct RC
 typedef packaged_task<double (RC)> PTask;
 
 extern PTask pTask[ROWS][COLS];
-
 extern double lhs[4][5];
 extern double rhsT[6][5];
 extern queue<RC> todoQueue;
 extern mutex queueMutex;
 extern Semaphore producer;
 extern Semaphore worker;
-
 
 
 double innerProduct(RC rc);

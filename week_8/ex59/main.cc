@@ -18,10 +18,7 @@ double rhsT[6][5] =
 	{3, 4, 5, 7, 4}
 };
 
-
-
-
-//PTask pTask[ROWS][COLS];
+PTask pTask[ROWS][COLS];
 
 queue<RC> todoQueue;
 mutex queueMutex;
@@ -36,9 +33,9 @@ int main()
 
 	produce();
 
-	for (size_t row = 0; row != 4; ++row)
+	for (size_t row = 0; row != ROWS; ++row)
 	{
-		for (size_t col = 0; col != 6; ++col)
+		for (size_t col = 0; col != COLS; ++col)
 		{
 			try
 			{

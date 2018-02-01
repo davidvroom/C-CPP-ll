@@ -72,6 +72,14 @@ We used the following code,
 \section*{Exercise 59}
 \desc{Become familiar with \texttt{packaged\_task (2)}}
 
+We used the following code,
+
+\lstinputlisting[title=\texttt{main.ih}]{../ex59/main.ih}
+\lstinputlisting[title=\texttt{main.cc}]{../ex59/main.cc}
+\lstinputlisting[title=\texttt{client.cc}]{../ex59/client.cc}
+\lstinputlisting[title=\texttt{getspecs.cc}]{../ex59/getspecs.cc}
+\lstinputlisting[title=\texttt{innerproduct.cc}]{../ex59/innerproduct.cc}
+\lstinputlisting[title=\texttt{produce.cc}]{../ex59/produce.cc}
 
 
 \clearpage
@@ -88,7 +96,8 @@ We used the following code,
 \section*{Exercise 62}
 \desc{Learn to inspect one or more \texttt{futures} from inside a repeat-statement, even if the future has not yet been made ready}
 
-We used the following code,
+For the case of one thread, we used the code below. \\
+In the case of multiple threads, some modifications are required. We propose to store the wanted number of threads in an enum. Then define an array of this size holding \texttt{future} objects. Then in a for loop start all the threads using \texttt{async}, and store the returned \texttt{future} object in the array. Then in the eternal while loop the main task is done, and the inspection. This inspection consists of a for loop over the future-array, checking if any is ready in the same way as in the code below. If this is the case, you should break from the while loop. In order to retrieve the message, the index of the specific \texttt{future} object is needed. Therefore, the \texttt{idx} parameter of the last for loop should be defined outside this loop.   
 
 \lstinputlisting[title=\texttt{main.cc}]{../ex62/main.cc}
 
