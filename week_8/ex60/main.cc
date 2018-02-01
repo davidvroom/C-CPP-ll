@@ -25,7 +25,9 @@ void quickSort(int *beg, int *end)
 
 int main()
 {
-    int ia[] = {16, 2, 77, 40, 12071, 12, 3134, 42, 5, 2453, 45, 3456, 35, 6, 56, 546, 2};
+    int ia[] = {16, 2, 77, 40, 12071, 12, 3134, 42, 
+                5, 2453, 45, 3456, 35, 6, 56, 546, 2};
+                
     size_t iaSize = 17; 
 
     quickSort(ia, ia + iaSize);
