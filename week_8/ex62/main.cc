@@ -21,7 +21,7 @@ string threadFun()
 
 int main()
 {
-	future<string> fut = std::async(launch::async, threadFun);
+	future<string> fut = async(launch::async, threadFun);
 
 	size_t count = 0;
 

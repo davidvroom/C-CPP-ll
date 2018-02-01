@@ -23,12 +23,19 @@ double rhsT[6][5] =
 	{3, 4, 5, 7, 4}
 };
 
+enum
+{
+	ROWS = 4,
+	COLS = 6,
+	COMMON = 5,
+};
+
 future<double> fut[4][6];
 
 double innerProduct(size_t row, size_t col) 
 {
 	double sum = 0;
-	for (size_t idx = 0; idx != 5; ++idx)
+	for (size_t idx = 0; idx != COMMON; ++idx)
 		sum += lhs[row][idx] * rhsT[col][idx];
     return sum;
 }
@@ -42,13 +49,13 @@ void computeElement(size_t row, size_t col)
 
 int main()
 {
-	for (size_t row = 0; row != 4; ++row)
-		for (size_t col = 0; col != 6; ++col)
+	for (size_t row = 0; row != ROWS; ++row)
+		for (size_t col = 0; col != COLS; ++col)
 			computeElement(row, col);
 
-	for (size_t row = 0; row != 4; ++row)
+	for (size_t row = 0; row != ROWS; ++row)
 	{
-		for (size_t col = 0; col != 6; ++col)
+		for (size_t col = 0; col != COLS; ++col)
 		{
 			try
 			{

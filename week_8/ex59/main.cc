@@ -2,18 +2,11 @@
 #include <future>
 #include <thread>
 #include <iomanip>
-#include "semaphore/semaphore.h"
 #include <mutex>
 #include <queue>
-#include <utility>
+#include "semaphore/semaphore.h"
 
 using namespace std;
-
-Semaphore workers(8); // number of threads that are available for a job
-Semaphore jobs(0); // jobs that need to be done
-
-mutex todoMutex;
-queue<pair<size_t, size_t>> todoQueue;
 
 double lhs[4][5] = 
 {
@@ -33,82 +26,106 @@ double rhsT[6][5] =
 	{3, 4, 5, 7, 4}
 };
 
-mutex futureMutex;
-future<double> fut[4][6];
+enum
+{
+	ROWS = 4,
+	COLS = 6,
+	COMMON = 5,
 
-double innerProduct(size_t row, size_t col) 
+	NTHREADS = 8,
+	NBUSYWORKERS = 0
+};
+
+struct RC
+{
+	size_t row;
+	size_t col;
+};
+
+typedef packaged_task<double (RC)> PTask;
+
+PTask pTask[ROWS][COLS];
+
+queue<RC> todoQueue;
+mutex queueMutex;
+
+mutex coutMutex;
+
+Semaphore producer(NTHREADS);
+Semaphore worker(NBUSYWORKERS);
+
+double innerProduct(RC rc) 
 {
 	double sum = 0;
-	for (size_t idx = 0; idx != 5; ++idx)
-		sum += lhs[row][idx] * rhsT[col][idx];
+	for (size_t idx = 0; idx != COMMON; ++idx)
+		sum += lhs[rc.row][idx] * rhsT[rc.col][idx];
     return sum;
 }
 
-bool nextJob(pair<size_t, size_t> &pair)
+RC getSpecs()
 {
-	lock_guard<mutex> lg(todoMutex);
-	if (todoQueue.empty())
+	lock_guard<mutex> lg(queueMutex);
+	RC ret = todoQueue.front();
+
+	if (ret.row == ROWS)
 	{
-		//jobs.notify_all();  //?
-		return false;
+		worker.notify_all();
+		return ret;
 	}
-	pair = todoQueue.front();
+
 	todoQueue.pop();
-	return true;
+	return ret;
 }
 
-void worker()
+void client()
 {
 	while (true)
 	{
-		jobs.wait();
-		pair<size_t, size_t> pair;
-		if (not nextJob(pair))
+		worker.wait();
+
+		RC rc = getSpecs();
+		if (rc.row == ROWS)
 			return;
-		packaged_task<double (size_t, size_t)> task(innerProduct);
-		{
-			lock_guard<mutex> lg(futureMutex);
-			fut[pair.first][pair.second] = task.get_future();
-			task(pair.first, pair.second);
-		}
-		workers.notify();
+
+		pTask[rc.row][rc.col](rc);
+
+		producer.notify_all();
 	}
 }
 
-void process()
+void produce()
 {
-	for (size_t row = 0; row != 4; ++row)
+	for (size_t row = 0; row != ROWS; ++row)
 	{
-		for (size_t col = 0; col != 6; ++col)
+		for (size_t col = 0; col != COLS; ++col)
 		{
-			workers.wait();
+			producer.wait();
+			pTask[row][col] = PTask(innerProduct);
 			{
-				lock_guard<mutex> lg(todoMutex);
-				todoQueue.push(pair<size_t, size_t> (row, col));
+				lock_guard<mutex> lg(queueMutex);
+				todoQueue.push(RC{ row, col });
 			}
-			jobs.notify(); 
+			worker.notify_all(); 
 		}
 	}
+	todoQueue.push(RC{ ROWS, COLS });
+	worker.notify_all(); // notify threads to stop
 }
 
 int main()
 {
-	for (size_t idx = 0; idx != 8; ++idx)
-		thread(worker).detach();
+	for (size_t idx = 0; idx != NTHREADS; ++idx)
+		thread(client).detach();
 
-	process();
+	produce();
 
-	while (not todoQueue.empty())
-		;
-
-	cout << todoQueue.size() << '\n';
 	for (size_t row = 0; row != 4; ++row)
 	{
 		for (size_t col = 0; col != 6; ++col)
 		{
 			try
 			{
-				cout << setw(5) << fut[row][col].get();
+				cout << setw(5) << pTask[row][col].get_future().get();
 			}
 			catch (exception const &msg)
 			{
