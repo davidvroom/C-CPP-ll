@@ -1,0 +1,44 @@
+#include <iostream>
+#include <future>
+#include <thread>
+#include <iomanip>
+#include <mutex>
+#include <queue>
+#include "semaphore/semaphore.h"
+
+using namespace std;
+
+
+enum
+{
+	ROWS = 4,
+	COLS = 6,
+	COMMON = 5,
+
+	NTHREADS = 8,
+	NBUSYWORKERS = 0
+};
+
+struct RC
+{
+	size_t row;
+	size_t col;
+};
+
+typedef packaged_task<double (RC)> PTask;
+
+extern PTask pTask[ROWS][COLS];
+
+extern double lhs[4][5];
+extern double rhsT[6][5];
+extern queue<RC> todoQueue;
+extern mutex queueMutex;
+extern Semaphore producer;
+extern Semaphore worker;
+
+
+
+double innerProduct(RC rc);
+RC getSpecs();
+void client();
+void produce();
