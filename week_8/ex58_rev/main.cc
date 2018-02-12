@@ -13,9 +13,11 @@ enum
 	COMMON = 5,
 };
 
-void computeElement(double *rowPtr, double *colPtr, size_t row, size_t col, future<double> (*fut)[COLS])
+void computeElement(double *rowPtr, double *colPtr, size_t row, 
+					size_t col, future<double> (*fut)[COLS])
 {
-	packaged_task<double (double *, double *, double *, double)> task(inner_product<double *, double *, double>);
+	packaged_task<double (double *, double *, double *, double)> 
+					task(inner_product<double *, double *, double>);
 	fut[row][col] = task.get_future();
 	thread(move(task), rowPtr, rowPtr + COMMON, colPtr, 0).detach();
 }
