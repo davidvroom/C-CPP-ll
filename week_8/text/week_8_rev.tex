@@ -1,0 +1,68 @@
+\documentclass[12pt]{article}
+\usepackage[left=1in, right=1in]{geometry}
+
+\usepackage{url}
+
+%\usepackage{arydshln}
+
+\usepackage{graphicx}
+
+\usepackage{color}
+\definecolor{light-gray}{gray}{0.30}
+
+\usepackage{verbatim}
+
+\usepackage{listings}
+\lstset{
+	frame=leftline,
+	frameround=ttff,
+	numbers=left,
+	language=C++,
+	showstringspaces=False,
+	extendedchars=False,
+	numberstyle=\footnotesize,
+	basicstyle=\small\ttfamily,
+	commentstyle=\color{light-gray}\slshape,
+	belowskip=1.5em,
+	aboveskip=1.5em,
+	fontadjust,
+	tabsize=4,		%added for proper tab alligning
+	xleftmargin=0cm,
+	xrightmargin=0cm
+}
+
+
+\newcommand{\desc}[1]{\textit{#1} \vspace{1em}}
+
+\title{\itshape Exercises week 8: Multi-threading II - Revision}
+
+\author{
+	Klaas Isaac Bijlsma \\ s2394480
+	\and
+	David Vroom \\ s2309939
+}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Exercise 58}
+\desc{Become familiar with \texttt{packaged\_task}}
+
+We used the following code,
+
+\lstinputlisting[title=\texttt{main.cc}]{../ex58_rev/main.cc}
+
+\clearpage
+
+\section*{Exercise 60}
+\desc{Learn to implement a multi-threaded algorithm (2)}
+
+We used the following code,
+
+\lstinputlisting[title=\texttt{main.cc}]{../ex60_rev/main.cc}
+
+\clearpage
+
+\end{document}
